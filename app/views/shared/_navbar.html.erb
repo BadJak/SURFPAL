@@ -1,14 +1,20 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon ">
+
   <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+    <%= image_tag "https://icon-library.net/images/ocean-waves-icon/ocean-waves-icon-4.jpg" %>
     <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+<!--     <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-info my-2 my-sm-0" style="border-radius: 20px;" type="submit">Search</button>
+    </form> -->
+    <div style="padding: 8px;"></div>
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
@@ -26,17 +32,16 @@
           </div>
         </li>
       <% else %>
-         <li class="topnav">
-          <input type="text" placeholder="Search..">
-        </li>
-        <li class="nav-item">
-          <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
-        </li>
         <li class="nav-item">
           <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </li>
 
       <% end %>
     </ul>
+
   </div>
+
 </div>
