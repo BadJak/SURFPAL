@@ -9,6 +9,7 @@
 # request = "http://services.surfline.com/kbyg/spots/forecasts/wave?spotId=5842041f4e65fad6a7708cf6&days=6&intervalHours=6"
 
 Beach.destroy_all
+Ride.destroy_all
 
 beaches = [
   {
@@ -104,5 +105,148 @@ beaches = [
 ]
 
 beaches.each do |beach|
-  Beach.create(name: beach[:name], city: beach[:city], lon: beach[:lon], lat: beach[:lat], surfline_name: beach[:surfline_name], surfline_id: beach[:surfline_id])
+  Beach.create(
+    name: beach[:name],
+    city: beach[:city],
+    lon: beach[:lon],
+    lat: beach[:lat],
+    surfline_name: beach[:surfline_name],
+    surfline_id: beach[:surfline_id]
+    )
+end
+
+rides = [
+  {
+    date: "17/08/2019",
+    time_slot: "morning",
+    beach_id: Beach.first.id,
+    wave_height: 1.21,
+    swell_period: 7.0,
+    wind_speed: 7.06,
+    wind_direction: 28.66,
+    wind_gust: 9.71
+  },
+
+  {
+    date: "17/08/2019",
+    time_slot: "afternoon",
+    beach_id: Beach.second.id,
+    wave_height: 2.4,
+    swell_period: 4.0,
+    wind_speed: 7.06,
+    wind_direction: 28.66,
+    wind_gust: 9.71
+  },
+
+  {
+    date: "17/08/2019",
+    time_slot: "morning",
+    beach_id: Beach.third.id,
+    wave_height: 2.21,
+    swell_period: 12.0,
+    wind_speed: 15.06,
+    wind_direction: 65.66,
+    wind_gust: 9.71
+  },
+
+  {
+    date: "17/08/2019",
+    time_slot: "noon",
+    beach_id: Beach.fourth.id,
+    wave_height: 1.21,
+    swell_period: 7.0,
+    wind_speed: 7.06,
+    wind_direction: 128.66,
+    wind_gust: 9.71
+  },
+
+  {
+    date: "17/08/2019",
+    time_slot: "morning",
+    beach_id: Beach.fifth.id,
+    wave_height: 1.04,
+    swell_period: 10.0,
+    wind_speed: 12.06,
+    wind_direction: 28.66,
+    wind_gust: 9.71
+  },
+
+    {
+    date: "17/08/2019",
+    time_slot: "morning",
+    beach_id: Beach.first.id,
+    wave_height: 0.21,
+    swell_period: 16.0,
+    wind_speed: 9.06,
+    wind_direction: 28.66,
+    wind_gust: 9.71
+  },
+
+  {
+    date: "17/08/2019",
+    time_slot: "morning",
+    beach_id: Beach.second.id,
+    wave_height: 1.21,
+    swell_period: 7.0,
+    wind_speed: 7.06,
+    wind_direction: 28.66,
+    wind_gust: 9.71
+  },
+
+  {
+    date: "17/08/2019",
+    time_slot: "morning",
+    beach_id: Beach.third.id,
+    wave_height: 1.21,
+    swell_period: 7.0,
+    wind_speed: 7.06,
+    wind_direction: 28.66,
+    wind_gust: 9.71
+  },
+
+  {
+    date: "17/08/2019",
+    time_slot: "morning",
+    beach_id: Beach.fourth.id,
+    wave_height: 1.76,
+    swell_period: 7.0,
+    wind_speed: 7.06,
+    wind_direction: 28.66,
+    wind_gust: 9.71
+  },
+
+  {
+    date: "17/08/2019",
+    time_slot: "morning",
+    beach_id: Beach.fifth.id,
+    wave_height: 1.21,
+    swell_period: 7.0,
+    wind_speed: 7.06,
+    wind_direction: 28.66,
+    wind_gust: 9.71
+  },
+
+  {
+    date: "17/08/2019",
+    time_slot: "morning",
+    beach_id: Beach.last.id,
+    wave_height: 1.21,
+    swell_period: 7.0,
+    wind_speed: 7.06,
+    wind_direction: 28.66,
+    wind_gust: 9.71
+  }
+]
+
+rides.each do |ride|
+  Ride.create(
+    date: ride[:date],
+    time_slot: ride[:time_slot],
+    beach_id: ride[:beach_id],
+    wave_height: ride[:wave_height],
+    swell_period: ride[:swell_period],
+    wind_speed: ride[:wind_speed],
+    wind_direction: ride[:wind_direction],
+    wind_gust: ride[:wind_gust]
+    )
 end
