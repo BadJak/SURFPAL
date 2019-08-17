@@ -15,3 +15,11 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+//position searchbar on left of navbar
+#search-text-input
+  .pull-left {
+    float: left !important;
+}
+
+
