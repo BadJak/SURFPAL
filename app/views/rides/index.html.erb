@@ -1,15 +1,22 @@
 <div class="content">
   <div class="results">
     <div class="big_card" style="background-image: url()">
-      Ain Diab
+      <%= @rides.first.beach.name %>
+      <%= @rides.first.date %>
+      <%= @rides.first.time_slot %>
     </div>
   <div class="cards">
 
     <div class="card" style="background-image: url()">
-      Berlin
+      <% @rides.each_with_index do |ride, index| %>
+      <% next if index == 0 %>
+      <%= rides.beach.name %>
+      <%= rides.date %>
+      <%= rides.time_slot %>
+      <% end %>
     </div>
 
-    <div class="card" style="background-image: url()">
+    <!-- <div class="card" style="background-image: url()">
       Shanghai
     </div>
 
@@ -27,7 +34,7 @@
 
     <div class="card" style="background-image: url()">
       Melbourne
-    </div>
+    </div> -->
   </div>
 
   </div>
