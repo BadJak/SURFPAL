@@ -11,7 +11,7 @@
 }
 
 #show-banner {
-  height: 250px;
+  height: 304px;
   width: 100vw;
   position: sticky;
   top: 0;
@@ -22,21 +22,21 @@
 
 /*Smallest device*/
 @media (min-width: 100px) and (max-width: 575px) {
-  .cards {
+  .show-cards {
     grid-template-columns: 1fr;
   }
 }
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
-  .cards {
+  .show-cards {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 1200px) {
-  .cards {
+  .show-cards {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
