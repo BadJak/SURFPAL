@@ -1,20 +1,26 @@
 <div class="content">
   <div class="results">
-    <div class="big_card" style="background-image: url()">
-      <%= @rides&.first&.beach&.name %>
-      <%= @rides&.first&.date %>
-      <%= @rides&.first&.time_slot %>
-    </div>
+
+    <%= link_to  ride_path(@rides.first) do %>
+      <div class="big_card" style="background-image: url(https://www.hertz.ma/upload/stuff/images/bouznika%20plage.jpg)">
+          <%= @rides&.first&.beach&.name %>
+          <%= @rides&.first&.date %>
+          <%= @rides&.first&.time_slot %>
+      </div>
+    <% end %>
+
   <div class="cards">
 
-    <div class="card" style="background-image: url()">
-      <% @rides.each_with_index do |ride, index| %>
+    <% @rides.each_with_index do |ride, index| %>
       <% next if index == 0 %>
-      <%= ride.beach.name %>
-      <%= ride.date %>
-      <%= ride.time_slot %>
-      <% end %>
-    </div>
+        <%= link_to ride_path(ride) do %>
+          <div class="card" style="background-image: url()">
+              <%= ride.beach.name %>
+              <%= ride.date %>
+              <%= ride.time_slot %>
+          </div>
+        <% end %>
+    <% end %>
 
     <!-- <div class="card" style="background-image: url()">
       Shanghai
