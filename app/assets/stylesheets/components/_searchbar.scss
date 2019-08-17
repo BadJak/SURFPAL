@@ -1,0 +1,41 @@
+.search-bar {
+  width: 790px;
+  height: 120px;
+  padding: 24px;
+  background-color: #ffffff5c;
+  border-radius: 4px;
+}
+
+.searchbtn {
+  margin-top: 32px;
+}
+
+
+/*Media Queries*/
+
+/*Smallest device*/
+@media (min-width: 100px) and (max-width: 575px) {
+  .search-bar {
+    width: 330px;
+    height: 269px;
+  }
+  .form-row {
+    flex-direction: column;
+  }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+ .search-bar {
+   width: 790px;
+   height: 120px;
+ }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 1200px) {
+ .search-bar {
+   width: 790px;
+   height: 120px;
+ }
+}
