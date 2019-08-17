@@ -4,6 +4,12 @@
 
 .results {
   flex-grow: 1;
+      a {
+      text-decoration: none;
+    }
+     a:hover {
+       text-decoration: none;
+     }
 }
 
 .big_card {
@@ -22,6 +28,7 @@
   color: white;
   font-weight: bolder;
   text-shadow: 0 0 10px rgba(0,0,0,0.7);
+
 }
 
 .cards {
@@ -30,6 +37,7 @@
   grid-template-columns:1fr 1fr;
   grid-gap: 16px;
   padding: 16px;
+
 }
 
 #map {

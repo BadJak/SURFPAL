@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_16_135834) do
+ActiveRecord::Schema.define(version: 2019_08_17_125402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,10 @@ ActiveRecord::Schema.define(version: 2019_08_16_135834) do
     t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "lon"
+    t.float "lat"
+    t.string "surfline_name"
+    t.string "surfline_id"
   end
 
   create_table "rides", force: :cascade do |t|
@@ -28,6 +32,11 @@ ActiveRecord::Schema.define(version: 2019_08_16_135834) do
     t.bigint "beach_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "wave_height"
+    t.float "swell_period"
+    t.float "wind_speed"
+    t.float "wind_direction"
+    t.float "wind_gust"
     t.index ["beach_id"], name: "index_rides_on_beach_id"
   end
 
