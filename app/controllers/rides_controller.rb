@@ -4,6 +4,11 @@ class RidesController < ApplicationController
 
   def index
     @rides = Ride.all
+    if params[:Where].present?
+          @rides = Ride.where(city: params[:where])
+    else
+          @rides = Ride.all
+    end
   end
 
   def show
