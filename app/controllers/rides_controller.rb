@@ -9,7 +9,7 @@ class RidesController < ApplicationController
     @rides = Ride.all
     if params[:where].present? && params[:when].present? && params[:experience].present?
 
-          @rides = Ride.joins(:beach).where(beach:{city: params[:where]},
+          @rides = Ride.joins(:beach).where(beaches:{city: params[:where]},
             date: params[:when])
     else
           redirect_to root_path
