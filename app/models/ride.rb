@@ -3,4 +3,5 @@ class Ride < ApplicationRecord
   validates :date, presence: true
   validates :time_slot, presence: true
 
+  geocoded_by :beach
 end

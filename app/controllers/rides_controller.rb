@@ -6,11 +6,23 @@ class RidesController < ApplicationController
 
     Beach.joins(:rides)
 
+
+
     @rides = Ride.all
     if params[:where].present? && params[:when].present? && params[:experience].present?
 
-          @rides = Ride.joins(:beach).where(beaches:{city: params[:where]},
-            date: params[:when])
+          @rides = Ride.near(params[:where], 50)
+
+          # @beaches = Ride.joins(:beach) #returns beaches with coordinates
+
+             @markers = @rides.map do |ride|
+               {
+                 lat: ride.latitude,
+                 lng: ride.longitude
+               }
+             end
+
+
     else
           redirect_to root_path
     end
