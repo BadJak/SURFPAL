@@ -1,10 +1,40 @@
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: white;
-  color: $blue;
+  background: linear-gradient(90deg, #ffae03 0%, #ffa101 16%, #ff9200 33%, #ff8400 50%, #ff7400 66%, #ff6200 83%, #fe4e00 100%);
+  color: white;
   text-align: center;
+  font-family: $headers-font;
+  font-size: 20px;
+  text-decoration: none;
+  padding-top: 20px;
+  width: 100%;
+  position: absolute;
+  height: 150px;
+  bottom: -150px;
 }
 
+.footer-copyright {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  color: black;
+  font-size: 10px;
+  text-align: center;
+  font-family: $headers-font;
+  font-size: 15px;
+  text-decoration: none;
+  a {
+    color: $orange;
+  }
+}
+
+#sm-icon {
+  margin: 5px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  font-size: 40px;
+  color: $white;
+}
+
+#sm-icon:hover {
+  color: $dark-orange;
+  }

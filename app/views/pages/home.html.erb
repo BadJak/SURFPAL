@@ -12,7 +12,7 @@
             <%= text_field_tag :where,
               params[:where],
               class: "form-control",
-              placeholder: "Where"
+              placeholder: "City"
             %>
           </div>
           <div class="col">
@@ -26,19 +26,17 @@
           <div class="col">
             <label>Experience ?</label>
             <%= select_tag(:experience,
-              options_for_select(['Rookie','Novice','Pro']),
+              options_for_select(['Rookie','Beginner','Intermediate, Pro']),
               {
               class: "form-control",
               placeholder: "Beginner"})
             %>
           </div>
-            <%= submit_tag "Search", class: "searchbtn btn btn-warning" %>
+            <%= submit_tag "Search", class: "searchbtn btn btn-warning", id: "search-btn" %>
         </div>
       <% end %>
 
     </div>
-
-
 
   </div>
 </div>

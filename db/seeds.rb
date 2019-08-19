@@ -13,8 +13,8 @@ Ride.destroy_all
 
 beaches = [
   {
-    name: "Dar Bouazza",
-    city: "Casablanca",
+    name: "Plage de Dar Bouazza",
+    city: "Dar Bouazza",
     lon: -7.817519444,
     lat: 33.53641111,
     surfline_name: "dar-bouazza",
@@ -117,7 +117,7 @@ end
 
 rides = [
   {
-    date: "17/08/2019",
+    date: "20/08/2019",
     time_slot: "morning",
     beach_id: Beach.first.id,
     wave_height: 1.21,
@@ -130,7 +130,7 @@ rides = [
   },
 
   {
-    date: "17/08/2019",
+    date: "20/08/2019",
     time_slot: "afternoon",
     beach_id: Beach.second.id,
     wave_height: 2.4,
@@ -143,7 +143,7 @@ rides = [
   },
 
   {
-    date: "17/08/2019",
+    date: "20/08/2019",
     time_slot: "morning",
     beach_id: Beach.third.id,
     wave_height: 2.21,
@@ -156,7 +156,7 @@ rides = [
   },
 
   {
-    date: "17/08/2019",
+    date: "20/08/2019",
     time_slot: "noon",
     beach_id: Beach.fourth.id,
     wave_height: 1.21,
@@ -169,7 +169,7 @@ rides = [
   },
 
   {
-    date: "17/08/2019",
+    date: "20/08/2019",
     time_slot: "morning",
     beach_id: Beach.fifth.id,
     wave_height: 1.04,
@@ -182,7 +182,7 @@ rides = [
   },
 
     {
-    date: "17/08/2019",
+    date: "21/08/2019",
     time_slot: "morning",
     beach_id: Beach.first.id,
     wave_height: 0.21,
@@ -195,7 +195,7 @@ rides = [
   },
 
   {
-    date: "17/08/2019",
+    date: "21/08/2019",
     time_slot: "morning",
     beach_id: Beach.second.id,
     wave_height: 1.21,
@@ -208,7 +208,7 @@ rides = [
   },
 
   {
-    date: "17/08/2019",
+    date: "21/08/2019",
     time_slot: "morning",
     beach_id: Beach.third.id,
     wave_height: 1.21,
@@ -221,7 +221,7 @@ rides = [
   },
 
   {
-    date: "17/08/2019",
+    date: "22/08/2019",
     time_slot: "morning",
     beach_id: Beach.fourth.id,
     wave_height: 1.76,
@@ -234,7 +234,7 @@ rides = [
   },
 
   {
-    date: "17/08/2019",
+    date: "22/08/2019",
     time_slot: "morning",
     beach_id: Beach.fifth.id,
     wave_height: 1.21,
@@ -247,7 +247,7 @@ rides = [
   },
 
   {
-    date: "17/08/2019",
+    date: "22/08/2019",
     time_slot: "morning",
     beach_id: Beach.last.id,
     wave_height: 1.21,
