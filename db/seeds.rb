@@ -124,7 +124,9 @@ rides = [
     swell_period: 7.0,
     wind_speed: 7.06,
     wind_direction: 28.66,
-    wind_gust: 9.71
+    wind_gust: 9.71,
+    longitude: Beach.first.lon,
+    latitude: Beach.first.lat
   },
 
   {
@@ -135,7 +137,9 @@ rides = [
     swell_period: 4.0,
     wind_speed: 7.06,
     wind_direction: 28.66,
-    wind_gust: 9.71
+    wind_gust: 9.71,
+    longitude: Beach.second.lon,
+    latitude: Beach.second.lat
   },
 
   {
@@ -146,7 +150,9 @@ rides = [
     swell_period: 12.0,
     wind_speed: 15.06,
     wind_direction: 65.66,
-    wind_gust: 9.71
+    wind_gust: 9.71,
+   longitude: Beach.third.lon,
+   latitude: Beach.third.lat
   },
 
   {
@@ -157,7 +163,9 @@ rides = [
     swell_period: 7.0,
     wind_speed: 7.06,
     wind_direction: 128.66,
-    wind_gust: 9.71
+    wind_gust: 9.71,
+    longitude: Beach.fourth.lon,
+    latitude: Beach.fourth.lat
   },
 
   {
@@ -168,7 +176,9 @@ rides = [
     swell_period: 10.0,
     wind_speed: 12.06,
     wind_direction: 28.66,
-    wind_gust: 9.71
+    wind_gust: 9.71,
+    longitude: Beach.fifth.lon,
+    latitude: Beach.fifth.lat
   },
 
     {
@@ -179,7 +189,9 @@ rides = [
     swell_period: 16.0,
     wind_speed: 9.06,
     wind_direction: 28.66,
-    wind_gust: 9.71
+    wind_gust: 9.71,
+   longitude: Beach.first.lon,
+   latitude: Beach.first.lat
   },
 
   {
@@ -190,7 +202,9 @@ rides = [
     swell_period: 7.0,
     wind_speed: 7.06,
     wind_direction: 28.66,
-    wind_gust: 9.71
+    wind_gust: 9.71,
+    longitude: Beach.second.lon,
+    latitude: Beach.second.lat
   },
 
   {
@@ -201,7 +215,9 @@ rides = [
     swell_period: 7.0,
     wind_speed: 7.06,
     wind_direction: 28.66,
-    wind_gust: 9.71
+    wind_gust: 9.71,
+    longitude: Beach.third.lon,
+    latitude: Beach.third.lat
   },
 
   {
@@ -212,7 +228,9 @@ rides = [
     swell_period: 7.0,
     wind_speed: 7.06,
     wind_direction: 28.66,
-    wind_gust: 9.71
+    wind_gust: 9.71,
+    longitude: Beach.fourth.lon,
+    latitude: Beach.fourth.lat
   },
 
   {
@@ -223,7 +241,9 @@ rides = [
     swell_period: 7.0,
     wind_speed: 7.06,
     wind_direction: 28.66,
-    wind_gust: 9.71
+    wind_gust: 9.71,
+    longitude: Beach.fifth.lon,
+    latitude: Beach.fifth.lat
   },
 
   {
@@ -234,7 +254,9 @@ rides = [
     swell_period: 7.0,
     wind_speed: 7.06,
     wind_direction: 28.66,
-    wind_gust: 9.71
+    wind_gust: 9.71,
+    longitude: Beach.last.lon,
+    latitude: Beach.last.lat
   }
 ]
 
@@ -247,6 +269,8 @@ rides.each do |ride|
     swell_period: ride[:swell_period],
     wind_speed: ride[:wind_speed],
     wind_direction: ride[:wind_direction],
-    wind_gust: ride[:wind_gust]
+    wind_gust: ride[:wind_gust],
+    longitude: ride[:longitude],
+    latitude: ride[:latitude]
     )
 end

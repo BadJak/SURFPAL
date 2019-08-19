@@ -15,8 +15,8 @@
       <% next if index == 0 %>
         <%= link_to ride_path(ride) do %>
           <div class="card" style="background-image: url()">
-              <%= ride.beach.name %>
-              <%= ride.date %>
+              <%= ride.beach.name %> <br>
+              <%= ride.date %> <br>
               <%= ride.time_slot %>
           </div>
         <% end %>
@@ -45,5 +45,10 @@
 
   </div>
 
-  <img id="map" src='https://raw.githubusercontent.com/lewagon/layouts-demo/gh-pages/images/mapbox.png'>
+  <div
+    id="map"
+
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
 </div>
