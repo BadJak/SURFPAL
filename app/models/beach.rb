@@ -3,6 +3,8 @@ class Beach < ApplicationRecord
   validates :name, presence: true
   validates :city, presence: true
 
+  geocoded_by :name
+
   include PgSearch
   pg_search_scope :search_by_name_and_city,
     against: [ :name, :city ],
