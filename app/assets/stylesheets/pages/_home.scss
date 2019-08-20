@@ -23,16 +23,3 @@
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
-
-#search-btn {
-  border-radius : 25px;
-  background: linear-gradient(90deg, #ffae03 0%, #ffa101 16%, #ff9200 33%, #ff8400 50%, #ff7400 66%, #ff6200 83%, #fe4e00 100%);
-  width: 125px;
-  color: white;
-}
-
-#search-btn:hover {
-  background: none;
-  background-color: white;
-  color: $dark-orange;
-  }

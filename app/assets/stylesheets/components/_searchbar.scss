@@ -3,21 +3,33 @@
   height: 120px;
   padding: 24px;
   background-color: #ffffff5c;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 .searchbtn {
   margin-top: 32px;
 }
 
+#search-btn {
+  border-radius : 25px;
+  background: linear-gradient(90deg, #ffae03 0%, #ffa101 16%, #ff9200 33%, #ff8400 50%, #ff7400 66%, #ff6200 83%, #fe4e00 100%);
+  width: 112px;
+  color: white;
+}
+
+#search-btn:hover {
+  background: none;
+  background-color: white;
+  color: $dark-orange;
+  }
 
 /*Media Queries*/
 
 /*Smallest device*/
 @media (min-width: 100px) and (max-width: 575px) {
   .search-bar {
-    width: 330px;
-    height: 269px;
+    width: 320px;
+    height: 320px;
   }
   .form-row {
     flex-direction: column;
@@ -27,15 +39,31 @@
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
  .search-bar {
-   width: 790px;
-   height: 120px;
+   width: 400px;
+   height: 320px;
  }
 }
 
 /*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+ .search-bar {
+   width: 704px;
+   height: 120px;
+ }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+ .search-bar {
+   width: 824px;
+   height: 120px;
+ }
+}
+
+/*Extra-large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
  .search-bar {
-   width: 790px;
+   width: 824px;
    height: 120px;
  }
 }
