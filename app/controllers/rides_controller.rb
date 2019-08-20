@@ -6,6 +6,7 @@ class RidesController < ApplicationController
     Beach.joins(:rides)
     @rides = Ride.all
     if params[:where].present? && params[:when].present? && params[:experience].present?
+
       @rides = Ride.near(params[:where], 50)
       # @beaches = Ride.joins(:beach) #returns beaches with coordinates
       @markers = @rides.map do |ride|
