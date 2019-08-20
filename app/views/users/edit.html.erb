@@ -1,0 +1,12 @@
+<%= form_for(@user) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :age %>
+  <%= f.text_field :age %>
+  <%= f.label :level %>
+  <%= f.text_field :level %>
+  <%= label :group_or_solo %>
+  <%= f.text_field :group_or_solo %>
+  <%= f.label :photo%>
+  <%= f.submit %>
+<% end %>
