@@ -1,10 +1,8 @@
 require 'date'
 require 'json'
 require 'open-uri'
-# require_relative '../models/user'
 
 class RidesController < ApplicationController
-
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -51,31 +49,29 @@ class RidesController < ApplicationController
     if result.nil?
       @beaches = Beach.near(params[:location], 100)
       @beaches.each do |beach|
-        @wave_info = fetch_data('wave', beach[:surfline_id])
-        @wind_info = fetch_data('wind', beach[:surfline_id])
-        raise
+        wave_info = fetch_data('wave', beach[:surfline_id])
+        wind_info = fetch_data('wind', beach[:surfline_id])
         @ride = Ride.create(
           date: Date.strptime(params[:date][:date], '%Y-%m-%d'),
           time_slot: params[:time],
           experience: params[:experience],
           beach_id: beach.id,
-          wave_height: @wave_info['surf_height'],
-          swell_height: @wave_info['swell_height'],
-          swell_period: @wave_info['swell_period'],
-          swell_direction: @wave_info['swell_direction'],
-          wind_speed: @wind_info['wind_speed'],
-          wind_direction: @wind_info['wind_direction'],
-          wind_gust: @wind_info['wind_gust'],
+          wave_height: wave_info['surf_height'],
+          swell_height: wave_info['swell_height'],
+          swell_period: wave_info['swell_period'],
+          swell_direction: wave_info['swell_direction'],
+          wind_speed: wind_info['wind_speed'],
+          wind_direction: wind_info['wind_direction'],
+          wind_gust: wind_info['wind_gust'],
           longitude: beach.longitude,
           latitude: beach.latitude,
-          scoring: Ride.new.score(@wave_info, @wind_info, params[:experience])
+          scoring: Ride.new.score(wave_info, wind_info, params[:experience])
           )
       end
     end
   end
 
   def fetch_data(type, spot_id)
-
     url = "http://services.surfline.com/kbyg/spots/forecasts/#{type}?spotId=#{spot_id}&days=6&intervalHours=6"
     data_serialized = open(url).read
     surfline_data = JSON.parse(data_serialized)
@@ -83,7 +79,6 @@ class RidesController < ApplicationController
     selected_item = data.select do |item|
       item['timestamp'] == format_date(params[:date], params[:time])
     end
-
     if type == 'wave'
       info = {
         'surf_height' => (selected_item.first['surf']['min'] + selected_item.first['surf']['max']) / 2.0,
@@ -99,7 +94,5 @@ class RidesController < ApplicationController
       }
     end
     return info
-
   end
-
 end
