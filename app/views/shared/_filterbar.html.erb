@@ -1,96 +1,39 @@
 <div class="d-flex justify-content-between flex-row-reverse filter-bar">
-     <div class="form-inline">
+    <div class="form-inline">
       <%= form_tag rides_path, method: :get do %>
         <div class="form-row">
-            <%= text_field_tag :where,
-              params[:where],
-              class: "form-control",
-              placeholder: "City"
-            %>
-            <%= text_field_tag :when,
-              params[:when],
-              class: "form-control d-none"
-            %>
-            <%= text_field_tag :experience,
-              params[:experience],
-              class: "form-control d-none"
-            %>
-            <%= submit_tag "Search", class: "searchbtn btn btn-warning d-none", id: "search-btn" %>
-        </div>
-      <% end %>
-     </div>
-    <div class="d-flex">
-      <div class="mr-5">
-        <%= form_tag rides_path, method: :get, class: "" do %>
-          <div class="form-row">
-              <%= text_field_tag :where,
-                params[:where],
-                class: "form-control d-none",
-                placeholder: "City"
-              %>
-              <%= date_field :when,
-                params[:when],
+            <div class="ml-3">
+              <%= date_field :date, :date,
+                value: Date.strptime(params[:date][:date], '%Y-%m-%d').to_time.strftime('%Y-%m-%d'),
                 class: "filterbord form-control",
                 onchange: "this.form.submit();"
               %>
-              <%= text_field_tag :experience,
-                params[:experience],
-                class: "form-control d-none"
-              %>
-              <%= submit_tag "Search", class: "searchbtn btn btn-warning d-none", id: "search-btn" %>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="mr-5">
-        <%= form_tag rides_path, method: :get, class: "" do %>
-          <div class="form-row">
-              <%= text_field_tag :where,
-                params[:where],
-                class: "form-control d-none",
-                placeholder: "City"
-              %>
-              <%= date_field :when,
-                params[:when],
-                class: "filterbord form-control d-none"
-              %>
-
+            </div>
+            <div class="ml-3">
               <%= select_tag(:time,
                 options_for_select(["Morning","Noon","Afternoon"], selected: params[:time]),
                 {
                 class: "filterbord form-control",
                 onchange: "this.form.submit();"
                 })
-                %>
-
-              <%= text_field_tag :experience,
-                params[:experience],
-                class: "form-control d-none"
+              %>
+            </div>
+            <div class="ml-3">
+              <%= select_tag(:experience,
+                options_for_select(['Rookie','Beginner','Advanced', 'Pro'], selected: params[:experience]),
+                {
+                class: "filterbord form-control",
+                  onchange: "this.form.submit();"
+                })
               %>
               <%= submit_tag "Search", class: "searchbtn btn btn-warning d-none", id: "search-btn" %>
-          </div>
-        <% end %>
-      </div>
-
-      <%= form_tag rides_path, method: :get do %>
-        <div class="form-row">
-            <%= text_field_tag :where,
-              params[:where],
-              class: "form-control d-none",
-              placeholder: "City"
-            %>
-            <%= text_field_tag :when,
-              params[:when],
-              class: "form-control d-none"
-            %>
-            <%= select_tag(:experience,
-              options_for_select(['Rookie','Beginner','Intermediate, Pro'], selected: params[:experience]),
-              {
-              class: "filterbord form-control",
-                onchange: "this.form.submit();"
-              })
-            %>
-            <%= submit_tag "Search", class: "searchbtn btn btn-warning d-none", id: "search-btn" %>
+            </div>
+            <div class="ml-3">
+              <%= text_field_tag :location,
+                params[:location],
+                class: "form-control"
+              %>
+            </div>
         </div>
       <% end %>
     </div>
