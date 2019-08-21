@@ -35,7 +35,9 @@
       <img src="https://images.unsplash.com/photo-1526485641275-3b11a42acd44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
       <div class="show-card-info">
         <div class="row">
+          <%= link_to ride_userrides_path(@ride), method: :post do  %>
           <button type="button" class="btn btn-warning" style="border-radius: 50px" >JOIN THE RIDE</button>
+          <% end %>
         </div>
       </div>
     </div>

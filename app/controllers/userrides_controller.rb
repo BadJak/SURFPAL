@@ -9,6 +9,7 @@ class UserridesController < ApplicationController
       redirect_to ride_path(@ride)
     else
       flash[:alert] = "You have already joined this ride"
+      redirect_to ride_path(@ride)
     end
   end
 
