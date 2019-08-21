@@ -51,20 +51,20 @@ class RidesController < ApplicationController
     if result.nil?
       @beaches = Beach.near(params[:location], 100)
       @beaches.each do |beach|
-        @wave_info = fetch_data('wave', beach[:surfline_id])
-        @wind_info = fetch_data('wind', beach[:surfline_id])
+        wave_info = fetch_data('wave', beach[:surfline_id])
+        wind_info = fetch_data('wind', beach[:surfline_id])
         @ride = Ride.create(
           date: Date.strptime(params[:date][:date], '%Y-%m-%d'),
           time_slot: params[:time],
           experience: params[:experience],
           beach_id: beach.id,
-          wave_height: @wave_info['surf_height'],
-          swell_height: @wave_info['swell_height'],
-          swell_period: @wave_info['swell_period'],
-          swell_direction: @wave_info['swell_direction'],
-          wind_speed: @wind_info['wind_speed'],
-          wind_direction: @wind_info['wind_direction'],
-          wind_gust: @wind_info['wind_gust'],
+          wave_height: wave_info['surf_height'],
+          swell_height: wave_info['swell_height'],
+          swell_period: wave_info['swell_period'],
+          swell_direction: wave_info['swell_direction'],
+          wind_speed: wind_info['wind_speed'],
+          wind_direction: wind_info['wind_direction'],
+          wind_gust: wind_info['wind_gust'],
           longitude: beach.longitude,
           latitude: beach.latitude,
           scoring: Ride.new.score(@wave_info, @wind_info, params[:experience])
