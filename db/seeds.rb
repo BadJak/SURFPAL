@@ -8,10 +8,8 @@
 
 # request = "http://services.surfline.com/kbyg/spots/forecasts/wave?spotId=5842041f4e65fad6a7708cf6&days=6&intervalHours=6"
 
-
+Ride.destroy_all
 Beach.destroy_all
-
-
 
 beaches = [
   {

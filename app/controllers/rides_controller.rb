@@ -1,6 +1,7 @@
 require 'date'
 require 'json'
 require 'open-uri'
+# require_relative '../models/user'
 
 class RidesController < ApplicationController
 
@@ -9,7 +10,8 @@ class RidesController < ApplicationController
   def index
     create
     if params[:location].present? && params[:date].present? && params[:time].present? && params[:experience].present?
-      @rides = Ride.near(params[:location], 100)
+      unsorted_rides = Ride.near(params[:location], 100)
+      @rides = unsorted_rides.sort_by { |k| -k[:scoring]}
       @markers = @rides.map do |ride|
         {
          lat: ride.latitude,
@@ -42,26 +44,31 @@ class RidesController < ApplicationController
   def create
     @rides = Ride.near(params[:location], 100)
     result = @rides.find do |ride|
-      Date.strptime(params[:date].first, '%Y-%m-%d') == ride.date && params[:time] == ride.time_slot
+      Date.strptime(params[:date].first, '%Y-%m-%d') == ride.date &&
+      params[:time] == ride.time_slot &&
+      params[:experience] == ride.experience
     end
     if result.nil?
       @beaches = Beach.near(params[:location], 100)
       @beaches.each do |beach|
-        wave_info = fetch_data('wave', beach[:surfline_id])
-        wind_info = fetch_data('wind', beach[:surfline_id])
+        @wave_info = fetch_data('wave', beach[:surfline_id])
+        @wind_info = fetch_data('wind', beach[:surfline_id])
+        raise
         @ride = Ride.create(
           date: Date.strptime(params[:date].first, '%Y-%m-%d'),
           time_slot: params[:time],
+          experience: params[:experience],
           beach_id: beach.id,
-          wave_height: wave_info['surf_height'],
-          swell_height: wave_info['swell_height'],
-          swell_period: wave_info['swell_period'],
-          swell_direction: wave_info['swell_direction'],
-          wind_speed: wind_info['wind_speed'],
-          wind_direction: wind_info['wind_direction'],
-          wind_gust: wind_info['wind_gust'],
+          wave_height: @wave_info['surf_height'],
+          swell_height: @wave_info['swell_height'],
+          swell_period: @wave_info['swell_period'],
+          swell_direction: @wave_info['swell_direction'],
+          wind_speed: @wind_info['wind_speed'],
+          wind_direction: @wind_info['wind_direction'],
+          wind_gust: @wind_info['wind_gust'],
           longitude: beach.longitude,
-          latitude: beach.latitude
+          latitude: beach.latitude,
+          scoring: Ride.new.score(@wave_info, @wind_info, params[:experience])
           )
       end
     end
@@ -79,7 +86,7 @@ class RidesController < ApplicationController
 
     if type == 'wave'
       info = {
-        'surf_height' => selected_item.first['surf']['max'],
+        'surf_height' => (selected_item.first['surf']['min'] + selected_item.first['surf']['max']) / 2.0,
         'swell_height' => selected_item.first['swells'].first['height'],
         'swell_period' => selected_item.first['swells'].first['period'],
         'swell_direction' => selected_item.first['swells'].first['direction']
