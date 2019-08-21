@@ -15,11 +15,11 @@
       <% next if index == 0 %>
         <%= link_to ride_path(ride) do %>
           <div class="card">
-            <h3> <%= ride.beach.name %> </h3>
+            <h2> <%= ride.beach.name %> </h2>
           </div>
           <div class = "row justify-content-between" style="padding: 16px;">
             <h4 class="card-info"> <%= ride.beach.city %> </h4>
-            <h4 class="card-scoring"><%= ride.scoring %> </h4>
+            <h4 class="card-info"><%= ride.scoring %> </h4>
           </div>
         <% end %>
     <% end %>
