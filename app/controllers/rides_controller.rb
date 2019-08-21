@@ -53,7 +53,6 @@ class RidesController < ApplicationController
       @beaches.each do |beach|
         @wave_info = fetch_data('wave', beach[:surfline_id])
         @wind_info = fetch_data('wind', beach[:surfline_id])
-        raise
         @ride = Ride.create(
           date: Date.strptime(params[:date][:date], '%Y-%m-%d'),
           time_slot: params[:time],
