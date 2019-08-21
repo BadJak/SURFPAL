@@ -4,22 +4,22 @@
   <div class="results">
 
     <%= link_to  ride_path(@rides.first) do %>
-      <div class="big_card" style="background-image: url(https://www.hertz.ma/upload/stuff/images/bouznika%20plage.jpg)">
-          <%= @rides&.first&.beach&.name %>
-          <%= @rides&.first&.date %>
-          <%= @rides&.first&.time_slot %>
+      <div class="first_card">
+        <h1><%= @rides&.first&.beach&.name %></h1>
+        <h2>Scoring: <%= @rides&.first&.scoring %></h2>
       </div>
     <% end %>
 
   <div class="cards">
-
     <% @rides.each_with_index do |ride, index| %>
       <% next if index == 0 %>
         <%= link_to ride_path(ride) do %>
-          <div class="card" style="background-image: url()">
-              <%= ride.beach.name %> <br>
-              <%= ride.date %> <br>
-              <%= ride.time_slot %>
+          <div class="card">
+            <h3> <%= ride.beach.name %> </h3>
+          </div>
+          <div class = "row justify-content-between" style="padding: 16px;">
+            <h4 class="card-info"> <%= ride.beach.city %> </h4>
+            <h4 class="card-scoring"><%= ride.scoring %> </h4>
           </div>
         <% end %>
     <% end %>

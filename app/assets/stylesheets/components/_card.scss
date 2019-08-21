@@ -1,16 +1,34 @@
 .card {
   background-size: cover;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1502209944943-85c1d6146367?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80);
   background-position: center;
-  height: 150px;
+  height: 160px;
   border-radius: 2px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   display: flex;
-  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  color: white;
+  font-size: 15px;
+  border: solid 2px $dark-blue;
+}
+
+.first_card {
+  background-size: cover;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.hertz.ma/upload/stuff/images/bouznika%20plage.jpg);
+  background-position: center;
+  height: 240px;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  display: grid;
+  text-align: center;
   justify-content: space-around;
   color: white;
   font-weight: bolder;
-  font-size: 22px;
-  text-shadow: 0 0 10px rgba(0,0,0,0.7);
+  font-size: 20px;
+  padding: 40px 0px 0px 0px;
+  margin: 16px 16px 0px 16px;
+  border: solid 4px $orange;
 }
 
 .show-card {
@@ -26,5 +44,51 @@
   font-weight: bolder;
   font-size: 22px;
   text-shadow: 0 0 10px rgba(0,0,0,0.7);
-
 }
+
+.cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns:1fr 1fr;
+  grid-gap: 16px;
+  padding: 16px;
+}
+
+// .cards > img {
+//   height: 200px;
+//   width: 100%;
+//   object-fit: cover;
+// }
+
+.card h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-info h4 {
+  font-size: 8px;
+  opacity: .7;
+  margin: 0;
+}
+
+.card-scoring h4 {
+  font-size: 8px;
+  opacity: .7;
+  margin: 0;
+}
+
+// .cards .card {
+//   padding: 16px;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: flex-end;
+//   position: relative;
+// }
+
+// .card .card-scoring {
+//   position: absolute;
+//   right: 16px;
+//   top: -20px;
+//   width: 40px;
+// }
