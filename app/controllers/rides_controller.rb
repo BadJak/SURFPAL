@@ -26,7 +26,7 @@ class RidesController < ApplicationController
   end
 
   def format_date(date, time)
-    formatted_date = Date.strptime(date.first, '%Y-%m-%d').to_time.to_i
+    formatted_date = Date.strptime(date[:date], '%Y-%m-%d').to_time.to_i
     if time == 'morning'
       formatted_date += 21600
     elsif time == 'noon'
@@ -42,7 +42,7 @@ class RidesController < ApplicationController
   def create
     @rides = Ride.near(params[:location], 100)
     result = @rides.find do |ride|
-      Date.strptime(params[:date].first, '%Y-%m-%d') == ride.date && params[:time] == ride.time_slot
+      Date.strptime(params[:date][:date], '%Y-%m-%d') == ride.date && params[:time] == ride.time_slot
     end
     if result.nil?
       @beaches = Beach.near(params[:location], 100)
@@ -50,7 +50,7 @@ class RidesController < ApplicationController
         wave_info = fetch_data('wave', beach[:surfline_id])
         wind_info = fetch_data('wind', beach[:surfline_id])
         @ride = Ride.create(
-          date: Date.strptime(params[:date].first, '%Y-%m-%d'),
+          date: Date.strptime(params[:date][:date], '%Y-%m-%d'),
           time_slot: params[:time],
           beach_id: beach.id,
           wave_height: wave_info['surf_height'],
