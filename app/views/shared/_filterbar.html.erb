@@ -2,15 +2,23 @@
      <div class="form-inline">
       <%= form_tag rides_path, method: :get do %>
         <div class="form-row">
-            <%= text_field_tag :where,
-              params[:where],
+            <%= text_field_tag :location,
+              params[:location,
               class: "form-control",
               placeholder: "City"
             %>
-            <%= text_field_tag :when,
-              params[:when],
+            <%= date_field :date,
+              params[:date],
               class: "form-control d-none"
             %>
+
+            <%= select_tag(:time,
+              options_for_select(['Morning','Noon','Afternoon']),
+              {
+              class: "form-control d-none",
+              placeholder: "Morning"})
+            %>
+
             <%= text_field_tag :experience,
               params[:experience],
               class: "form-control d-none"
