@@ -31,6 +31,7 @@ class Scoring
       elsif value > 1.5 then scoring = 3
       elsif value > 1 then scoring = 4
       else scoring = 5
+      end
     elsif experience = 'beginner'
       if value > 5 then scoring = 1
       elsif value > 3 then scoring = 2
@@ -38,6 +39,7 @@ class Scoring
       elsif value > 1.5 then scoring = 4
       elsif value > 1 then scoring = 5
       else scoring = 4
+      end
     elsif experience = 'advanced'
       if value > 5 then scoring = 2
       elsif value > 3 then scoring = 3
@@ -45,6 +47,7 @@ class Scoring
       elsif value > 1.5 then scoring = 5
       elsif value > 1 then scoring = 4
       else scoring = 3
+      end
     else
       if value > 5 then scoring = 5
       elsif value > 3 then scoring = 4.5
@@ -52,6 +55,7 @@ class Scoring
       elsif value > 1.5 then scoring = 3
       elsif value > 1 then scoring = 2
       else scoring = 1
+      end
     end
     return scoring
   end
@@ -63,6 +67,7 @@ class Scoring
     elsif value > 7 then scoring = 3
     elsif value > 5 then scoring = 2
     else scoring = 1
+    end
   end
 
   def swell_direction(value)
@@ -75,6 +80,7 @@ class Scoring
     elsif value > 15 then scoring = 4
     elsif value > 10 then scoring = 4.5
     else scoring = 5
+    end
   end
 
   def wind_gust(value)
@@ -84,6 +90,7 @@ class Scoring
     elsif value > 7 then scoring = 3
     elsif value > 4 then scoring = 4
     else scoring = 5
+    end
   end
 
   def wind_direction(value)
@@ -93,6 +100,7 @@ class Scoring
     elsif (value-180).abs > 60 then scoring = 3
     elsif (value-180).abs > 30 then scoring = 4
     else scoring = 5
+    end
   end
 end
 
