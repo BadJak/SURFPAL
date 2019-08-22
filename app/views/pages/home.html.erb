@@ -1,9 +1,9 @@
-<div class=<%=["banner1","banner2","banner3","banner4","banner5"].sample%> >
+<div class="banner" style='background: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url("<%=@banner_img%>");'>
   <div class="container-fluid">
 
     <div class="search-bar">
       <h1>Find your next ride</h1>
-      <p><%=["We recommend the best surf sessions for you.","We help surfers catch the best waves nearby.","Easy surf forecasting for pros and beginners."].sample%></p>
+      <p><%=@banner_header%></p>
       <%= form_tag rides_path, method: :get do %>
         <div class="form" >
           <label id="label">Where ?</label>

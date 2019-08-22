@@ -49,17 +49,9 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
-.show-card > img {
-  height: 80px;
-  object-fit: cover;
-}
-
-.show-beach-card-info {
-  padding: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
+.show-beach-card:hover {
+  border: solid 2px $dark-blue;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .show-card-info h2 {
@@ -75,7 +67,20 @@
   top: 0px;
   border-radius: 3px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  text-align: center;
+}
+
+.show-beach-card-info:hover {
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+}
+
+#show-info-ride-joiners {
+  text-align: left;
+  padding: 16px;
+  margin: 16px;
 }
 
 .show-info-ride > img {
