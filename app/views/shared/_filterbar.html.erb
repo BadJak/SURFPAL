@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-between filter-bar">
+    <div class="form-inline">
+      <%= form_tag rides_path, method: :get do %>
+        <div class="form-row">
+            <div class="ml-3">
+              <%= text_field_tag :location,
+                params[:location],
+                class: "form-control"
+              %>
+            </div>
+            <div class="ml-3">
+              <%= date_field :date, :date,
+                value: Date.strptime(params[:date][:date], '%Y-%m-%d').to_time.strftime('%Y-%m-%d'),
+                class: "filterbord form-control",
+                onchange: "this.form.submit();"
+              %>
+            </div>
+            <div class="ml-3">
+              <%= select_tag(:time,
+                options_for_select(["Morning","Noon","Afternoon"], selected: params[:time]),
+                {
+                class: "filterbord form-control",
+                onchange: "this.form.submit();"
+                })
+              %>
+            </div>
+            <div class="ml-3">
+              <%= select_tag(:experience,
+                options_for_select(['Rookie','Beginner','Advanced', 'Pro'], selected: params[:experience]),
+                {
+                class: "filterbord form-control",
+                  onchange: "this.form.submit();"
+                })
+              %>
+              <%= submit_tag "Search", class: "searchbtn btn btn-warning d-none", id: "search-btn" %>
+            </div>
+        </div>
+      <% end %>
+    </div>
+</div>
+

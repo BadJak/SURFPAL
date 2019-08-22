@@ -1,0 +1,29 @@
+#search-btn {
+  background-color: $dark-orange;
+  border: solid 2px white;
+  border-radius: 25px;
+  width: 140px;
+  color: white;
+  float: right;
+  margin: 24px 0px 24px 24px;
+}
+
+#search-btn:hover {
+  background: none;
+  background-color: white;
+  color: $dark-orange;
+  border: solid 2px $dark-orange;
+}
+
+#join-btn {
+  background: linear-gradient(270deg, #00a2b3 0%, #0c98b3 16%, #118eb3 33%, #1284b3 50%, #107ab3 66%, #0b71b3 83%, #0067b3 100%);
+  font-family: $headers-font;
+  font-size: 24px;
+  font-weight: bold;
+  border: solid 2px white;
+  border-radius: 50px;
+  width: 30%;
+  height: 56px;
+  color: white;
+  margin: 24px 24px 24px 24px;
+}
