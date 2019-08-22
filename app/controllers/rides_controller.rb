@@ -8,14 +8,22 @@ class RidesController < ApplicationController
   def index
     create
     if params[:location].present? && params[:date].present? && params[:time].present? && params[:experience].present?
-      unsorted_rides = Ride.near(params[:location], 100)
+      unsorted_rides = Ride.near(params[:location], 100).where(date: Date.strptime(params[:date][:date], '%Y-%m-%d'), time_slot: params[:time], experience: params[:experience])
       @rides = unsorted_rides.sort_by { |k| -k[:scoring]}
-      @markers = @rides.map do |ride|
-        {
-         lat: ride.latitude,
-         lng: ride.longitude
-        }
-      end
+        if @rides.empty?
+          results = Geocoder.search(params[:location])
+          @markers = {
+             lat: results.first.coordinates[0],
+             lng: results.first.coordinates[1]
+            }
+        else
+          @markers = @rides.map do |ride|
+            {
+             lat: ride.latitude,
+             lng: ride.longitude
+            }
+          end
+        end
     else
       redirect_to root_path
     end

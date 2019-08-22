@@ -9,8 +9,7 @@
               %>
             </div>
             <div class="ml-3">
-              <%= date_field :date, :date,
-                value: Date.strptime(params[:date][:date], '%Y-%m-%d').to_time.strftime('%Y-%m-%d'),
+              <%= date_field :date, :date, :value => Time.now.strftime('%Y-%m-%d'), min: Date.today, max: (Date.today + 5.days),
                 class: "filterbord form-control",
                 onchange: "this.form.submit();"
               %>

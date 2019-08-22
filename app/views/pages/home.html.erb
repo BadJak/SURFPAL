@@ -1,4 +1,4 @@
-<div class="banner" style='background: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url("<%=@banner_img%>");'>
+  <div class="banner" style='background: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url("<%=@banner_img%>");'>
   <div class="container-fluid">
 
     <div class="search-bar">
@@ -15,7 +15,7 @@
           <div class="row">
             <div class="col-md-6">
               <label id="label">When ?</label>
-              <%= date_field :date, :date,
+              <%= date_field :date, :date, :value => Time.now.strftime('%Y-%m-%d'), min: Date.today, max: (Date.today + 5.days),
                 class: "form-control",
                 placeholder: "dd/mm/yyyy"
               %>

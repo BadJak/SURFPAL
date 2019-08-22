@@ -4,12 +4,22 @@
 
 .results {
   flex-grow: 1;
-      a {
+    a {
       text-decoration: none;
     }
      a:hover {
        text-decoration: none;
      }
+}
+
+.error-banner {
+  overflow: hidden;
+  background: white;
+  height: 360px;
+  margin: 16px 16px 16px 16px ;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  padding: 2px;
 }
 
 #map {
