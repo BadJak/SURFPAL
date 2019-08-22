@@ -5,5 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :userrides
   has_many :rides, through: :userrides
+
+  has_many :messages
+  has_many :users, through: :messages
+
   validates :username, presence: true, uniqueness: true
 end

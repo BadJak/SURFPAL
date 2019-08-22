@@ -54,6 +54,23 @@
           </div>
         </div>
       </div>
+
+      <div class="show-card">
+
+        <div class="show-card-info">
+          <div class="row">
+           <%= form_tag ride_messages_path(@ride), method: :post do %>
+             <%= text_field_tag :message,
+               params[:message],
+               class: "form-control",
+               placeholder: "send a message"
+             %>
+             <%= submit_tag "send", class: "btn btn-primary" %>
+           <% end %>
+          </div>
+        </div>
+      </div>
+
     <% end %>
 
     </div>

@@ -2,6 +2,10 @@ class Ride < ApplicationRecord
   belongs_to :beach
   has_many :userrides
   has_many :users, through: :userrides
+
+  has_many :messages
+  has_many :users, through: :messages
+
   validates :date, presence: true
   validates :time_slot, presence: true
 
