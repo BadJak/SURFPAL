@@ -1,62 +1,60 @@
-.show-header {
-  text-align: center;
-  padding-top: 16px;
-}
-.show-container {
+.show-banner-container {
   display: flex;
 }
 
 .show-banner {
   overflow: hidden;
-  background-image: white;
-  height: 280px;
+  background: white;
+  height: 360px;
   width: 100vw;
-  top: 0;
   margin: 16px 16px 0px 16px ;
-  border-radius: 2px;
+  border-radius: 3px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  padding: 2px;
 }
 
-.show-banner > img {
+.carousel-item > img {
 
-  height: 220px;
+  height: 296px;
   width: 100%;
   object-fit: cover;
 }
 
 .show-banner-info {
   padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   position: relative;
 }
 
-.show-banner-info h2 {
-  text-align: center;
+.show-info-container {
+  display: flex;
 }
 
-.show-cards {
+.show-info-beach {
   flex-grow: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+  grid-template-columns: 1fr;
   padding: 16px;
 }
 
-.show-card {
+.show-beach-card {
   overflow: hidden;
   background: white;
-  height: 216px;
-  padding: 8px 8px 8px 8px ;
+  max-height: 136px;
+  padding: 8px ;
+  margin-bottom: 16px;
   border-radius: 2px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .show-card > img {
-  height: 150px;
-  width: 100%;
+  height: 80px;
   object-fit: cover;
 }
 
-.show-card-info {
+.show-beach-card-info {
   padding: 8px;
   display: flex;
   justify-content: space-between;
@@ -67,6 +65,23 @@
 .show-card-info h2 {
   font-size: 24px;
 }
+
+.show-info-ride {
+  height: 100vh;
+  width: 80vh;
+  position: sticky;
+  margin: 16px 16px 16px 0px ;
+  padding:2px;
+  top: 0px;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.show-info-ride > img {
+  width: 100%;
+}
+
 
 /*Media Queries*/
 

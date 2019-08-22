@@ -1,25 +1,212 @@
 // Specific CSS for your home-page
 
-.banner {
+.container-fluid {
+  padding-left: 96px;
+}
+
+.banner1 {
   background: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://images.unsplash.com/photo-1486890598084-3673ba1808c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
+  position: bottom 300px right 300px;
   min-height: 100vh;
   min-width: 100vw;
   background-size: cover;
   background-position: center;
-  padding: 150px 0;
+  padding: 60px 0;
 }
 
-.banner h1 {
+.banner2 {
+  background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(https://images.unsplash.com/photo-1503293962593-47247718a17a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80);
+  min-height: 100vh;
+  min-width: 100vw;
+  background-size: cover;
+  background-position: center;
+  padding: 60px 0;
+}
+
+.banner3 {
+  background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1527593625869-8f9b09712351?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80);
+  min-height: 100vh;
+  min-width: 100vw;
+  background-size: cover;
+  background-position: center;
+  padding: 60px 0;
+}
+
+.banner4 {
+  background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1484260001192-bfe826505222?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80);
+  min-height: 100vh;
+  min-width: 100vw;
+  background-size: cover;
+  background-position: center;
+  padding: 60px 0;
+}
+
+.banner5 {
+  background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1470093384771-2d35ffe00073?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80);
+  min-height: 100vh;
+  min-width: 100vw;
+  background-size: cover;
+  background-position: center;
+  padding: 60px 0;
+}
+
+.banner1 h1 {
   margin: 0;
-  color: $orange;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 60px;
-  font-weight: bold;
+  color: $dark-orange;
+  padding: 16px 0px 8px 0px;
+  font-size: 44px;
+  font-weight: bolder;
 }
 
-.banner p {
-  font-size: 30px;
-  color: white;
-  opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+.banner2 h1 {
+  margin: 0;
+  color: $dark-orange;
+  padding: 16px 0px 8px 0px;
+  font-size: 44px;
+  font-weight: bolder;
+}
+
+.banner3 h1 {
+  margin: 0;
+  color: $dark-orange;
+  padding: 16px 0px 8px 0px;
+  font-size: 44px;
+  font-weight: bolder;
+}
+
+.banner4 h1 {
+  margin: 0;
+  color: $dark-orange;
+  padding: 16px 0px 8px 0px;
+  font-size: 44px;
+  font-weight: bolder;
+}
+
+.banner5 h1 {
+  margin: 0;
+  color: $dark-orange;
+  padding: 16px 0px 8px 0px;
+  font-size: 44px;
+  font-weight: bolder;
+}
+
+.banner1 p {
+  font-size: 28px;
+  color: black;
+  opacity: .8;
+}
+
+.banner2 p {
+  font-size: 28px;
+  color: black;
+  opacity: .8;
+}
+
+.banner3 p {
+  font-size: 28px;
+  color: black;
+  opacity: .8;
+}
+
+.banner4 p {
+  font-size: 28px;
+  color: black;
+  opacity: .8;
+}
+
+.banner5 p {
+  font-size: 28px;
+  color: black;
+  opacity: .8;
+}
+
+/*Media Queries*/
+
+/*Smallest device*/
+@media (min-width: 100px) and (max-width: 575px) {
+  .container-fluid {
+    padding-left: 0px;
+    max-width: 80%
+  }
+
+  .banner1 h1 {
+  font-size: 38px;
+  }
+
+  .banner2 h1 {
+  font-size: 38px;
+  }
+  .banner3 h1 {
+  font-size: 38px;
+  }
+
+  .banner4 h1 {
+  font-size: 38px;
+  }
+
+  .banner5 h1 {
+  font-size: 38px;
+  }
+}
+
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  .container-fluid {
+    padding-left: 0px;
+    max-width: 80%;
+  }
+
+  .banner1 h1 {
+  font-size: 38px;
+  }
+
+  .banner2 h1 {
+  font-size: 38px;
+  }
+  .banner3 h1 {
+  font-size: 38px;
+  }
+
+  .banner4 h1 {
+  font-size: 38px;
+  }
+
+  .banner5 h1 {
+  font-size: 38px;
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .container-fluid {
+    padding-left: 96px;
+    max-width: 100%;
+  }
+
+    .banner1 h1 {
+  font-size: 44px;
+  }
+
+  .banner2 h1 {
+  font-size: 44px;
+  }
+  .banner3 h1 {
+  font-size: 44px;
+  }
+
+  .banner4 h1 {
+  font-size: 44px;
+  }
+
+  .banner5 h1 {
+  font-size: 44px;
+  }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  .container-fluid {
+    padding-left: 96px;
+  }
 }
