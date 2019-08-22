@@ -1,5 +1,9 @@
 class Beach < ApplicationRecord
   has_many :rides
+
+  has_many :reviews
+  has_many :users, through: :reviews
+
   validates :name, presence: true
   validates :city, presence: true
 
