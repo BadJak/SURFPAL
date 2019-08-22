@@ -1,12 +1,13 @@
-<%= form_for(@user) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :age %>
-  <%= f.text_field :age %>
-  <%= f.label :level %>
-  <%= f.text_field :level %>
-  <%= label :group_or_solo %>
-  <%= f.text_field :group_or_solo %>
-  <%= f.label :photo%>
-  <%= f.submit %>
+<h3>Create or update your profile:</h3>
+
+<!--User profile picture-->
+
+<%= simple_form_for @user do |f| %>
+  <%= f.input :username %>
+  <%= f.input :level, collection: ['Rookie', 'Begginer', 'Advanced', 'Pro' ], label: 'How much surfing experience do you have?' %>
+  <%= f.input :group_or_solo, collection: ['Group', 'Solo'], label: 'Do you prefer to surf alone or with others?' %>
+  <%= f.input :age, collection: ['14-17', '18-23', '24-29', '30-39', '40-49', '50-59', '60+'], label: 'What is your age group?' %>
+  <%= f.submit "All done. Update my profile, please.", class: "btn btn-primary" %>
 <% end %>
+
+

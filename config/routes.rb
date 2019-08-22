@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :rides, only: [:index, :show] do
     resources :userrides,  only: [:create]
   end
+  resources :users, only: [:show, :edit, :update]
 end
