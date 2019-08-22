@@ -30,8 +30,7 @@
     </div>
     <div>
       <div class="show-banner-info">
-        <h2> <%= @ride.beach.name %> </h2>
-        <h2> Scoring: <strong><%= @ride.scoring %> </strong></h2>
+        <h2 > Scoring:<strong> <%=  @ride.scoring %> </strong></h2>
       </div>
     </div>
   </div>
@@ -43,19 +42,61 @@
   <div class="show-info-beach">
 
     <div class="show-beach-card">
-      <img src="https://image.flaticon.com/icons/png/512/2045/2045847.png" style="width:80px">
-      <div class="show-beach-card-info">
-        <h2> Wave height </h2>
-        <h2> <%= @ride[:wave_height].round(2) %>m </h2>
-      </div>
+      <h2> <%= @ride.beach.name %> </h2>
+      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit." </p>
+      <h4>Available services: </h4>
+        <div class="beach-icons">
+          <i class="fas fa-parking" id="beach-icon-on"></i>
+          <i class="far fa-life-ring" id="beach-icon-on"></i>
+          <i class="fas fa-shower" id="beach-icon-off"></i>
+          <i class="fas fa-store" id="beach-icon-on"></i>
+          <i class="fas fa-utensils" id="beach-icon-off"></i>
+          <i class="fas fa-mug-hot" id="beach-icon-off"></i>
+        </div>
     </div>
 
     <div class="show-beach-card">
-      <img src="https://image.flaticon.com/icons/png/512/2045/2045847.png" style="width:80px">
-      <div class="show-beach-card-info">
-        <h2> Swell period </h2>
-        <h2> <%= @ride[:swell_period].round(2) %>s </h2>
-      </div>
+
+      <h2> Reviews </h2>
+
+        <div class="show-beach-card-review">
+          <img src="https://c-sf.smule.com/sf/s57/arr/66/7b/6e9f1098-7c27-4544-b459-f90d306a479f.jpg" class="avatar-medium-bordered"/>
+          <div class="show-beach-card-review-content">
+            <h4><strong>Brice</strong> from Nice, France</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. Ut enim ad minim veniam.</p>
+          </div>
+        </div>
+
+        <div class="show-beach-card-review">
+          <img src="https://d3fic6bj5pagcw.cloudfront.net/media/catalog/category/stephanie-gilmore-profile.png" class="avatar-medium-bordered" />
+          <div class="show-beach-card-review-content">
+            <h4><strong>Steph</strong> from Byron Bay, Australia</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. Ut enim ad minim veniam.</p>
+          </div>
+        </div>
+
+        <div class="show-beach-card-review">
+          <img src="https://uploads.beam.pro/avatar/ct1vj8cq-7647714.jpg" class="avatar-medium-bordered" />
+          <div class="show-beach-card-review-content">
+            <h4><strong>Earl</strong> from San Diego, US</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. Ut enim ad minim veniam.</p>
+          </div>
+        </div>
+
+    </div>
+
+    <div class="show-beach-card">
+
+      <h2> Word from a local expert in <%= @ride.beach.city %> </h2>
+
+        <div class="show-beach-card-review">
+          <img src="https://d3g9pb5nvr3u7.cloudfront.net/authors/5644e7c8d120bd796c370562/703519106/256.jpg" class="avatar-large" />
+          <div class="show-beach-card-review-content">
+            <h4><strong>Simo</strong> from <%= @ride.beach.city %>, Morocco</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+        </div>
+
     </div>
 
     <div class="show-beach-card">

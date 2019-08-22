@@ -27,3 +27,26 @@
   color: white;
   margin: 24px 24px 24px 24px;
 }
+
+.beach-icons {
+  font-size: 32px;
+  padding: 12px;
+}
+
+#beach-icon-on {
+  padding: 12px;
+  color: $dark-blue;
+}
+
+#beach-icon-on:hover {
+  color: $orange;
+}
+
+#beach-icon-off {
+  padding: 8px;
+  color: $grey;
+}
+
+#beach-icon-off:hover {
+  color: $light-grey;
+}

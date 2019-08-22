@@ -23,8 +23,7 @@
 .show-banner-info {
   padding: 16px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: center;
   position: relative;
 }
 
@@ -36,22 +35,37 @@
   flex-grow: 1;
   display: grid;
   grid-template-columns: 1fr;
-  padding: 16px;
+  margin: 16px;
+  background: white;
 }
 
 .show-beach-card {
   overflow: hidden;
   background: white;
-  max-height: 136px;
   padding: 8px ;
-  margin-bottom: 16px;
+  margin: 8px;
   border-radius: 2px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .show-beach-card:hover {
-  border: solid 2px $dark-blue;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.show-beach-card-review {
+  overflow: hidden;
+  min-height: 80px;
+  background: white;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+
+.show-beach-card-review-content {
+  padding: 8px  8px  0px 16px ;
+}
+
+.show-beach-card-review-content h4 p {
+  margin: 0px;
 }
 
 .show-card-info h2 {
@@ -59,8 +73,8 @@
 }
 
 .show-info-ride {
+  flex-grow: 1;
   height: 100vh;
-  width: 80vh;
   position: sticky;
   margin: 16px 16px 16px 0px ;
   padding:2px;
