@@ -4,7 +4,6 @@ class Ride < ApplicationRecord
   has_many :users, through: :userrides
 
   has_many :messages
-  has_many :users, through: :messages
 
   validates :date, presence: true
   validates :time_slot, presence: true

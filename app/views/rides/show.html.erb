@@ -55,18 +55,28 @@
         </div>
       </div>
 
+
+
       <div class="show-card">
 
         <div class="show-card-info">
-          <div class="row">
-           <%= form_tag ride_messages_path(@ride), method: :post do %>
-             <%= text_field_tag :message,
-               params[:message],
-               class: "form-control",
-               placeholder: "send a message"
+          <div style="width: 100%">
+            <div  class="pl-2" style="background-color: #f2e0ae">
+              <% @ride.messages.each do |message| %>
+              <p>
+                <strong><%= message.user.username %>:</strong>
+                <%= message.message %>
+              </p>
+              <% end %>
+            </div>
+            <%= simple_form_for [@ride, Message.new] do |f|%>
+             <%= f.input :message,
+               class: "form-control block",
+               placeholder: "send a message",
+               label: false
              %>
-             <%= submit_tag "send", class: "btn btn-primary" %>
-           <% end %>
+             <%= f.submit class: "btn btn-warning btn-block" %>
+            <% end %>
           </div>
         </div>
       </div>
