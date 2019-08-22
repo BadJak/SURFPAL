@@ -1,69 +1,64 @@
 .search-bar {
-  width: 960px;
-  height: 120px;
-  padding: 24px;
-  background-color: #ffffff5c;
+  width: 456px;
+  height: 552px;
+  margin-top: 24px;
+  padding: 18px 32px 18px 32px ;
+  background-color: rgba(255,255,255,0.5);
   border-radius: 3px;
 }
 
-.searchbtn {
-  margin-top: 32px;
+#label {
+  font-size: 18px;
+  margin-top: 12px;
+  font-family: $headers-font;
 }
 
-#search-btn {
-  border-radius : 25px;
-  background: linear-gradient(90deg, #ffae03 0%, #ffa101 16%, #ff9200 33%, #ff8400 50%, #ff7400 66%, #ff6200 83%, #fe4e00 100%);
-  width: 112px;
-  color: white;
+.form-control {
+  border-radius: 3px;
 }
 
-#search-btn:hover {
-  background: none;
-  background-color: white;
-  color: $dark-orange;
-  }
+.form-control:hover {
+  border: solid 2px $dark-orange;
+}
 
 /*Media Queries*/
 
 /*Smallest device*/
 @media (min-width: 100px) and (max-width: 575px) {
   .search-bar {
-    width: 320px;
-    height: 320px;
-  }
-  .form-row {
-    flex-direction: column;
+    width: 400px;
+    height: 624px;
   }
 }
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
- .search-bar {
-   width: 400px;
-   height: 320px;
- }
+  .search-bar {
+    width: 400px;
+    height: 624px;
+  }
 }
 
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
- .search-bar {
-   width: 704px;
-   height: 120px;
+  .search-bar {
+    width: 456px;
+    height: 552px;
  }
 }
 
 /*Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
- .search-bar {
-   width: 960px;
-   height: 120px;
+  .search-bar {
+    width: 456px;
+    height: 552px;
  }
 }
 
 /*Extra-large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
  .search-bar {
-   width: 960px;
-   height: 120px;
+  width: 456px;
+  height: 552px;
  }
 }
