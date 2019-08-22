@@ -73,10 +73,9 @@
 }
 
 .show-info-ride {
-  flex-grow: 1;
   height: 100vh;
   position: sticky;
-  margin: 16px 16px 16px 0px ;
+  margin: 16px 16px 16px 16px ;
   padding:2px;
   top: 0px;
   border-radius: 3px;
@@ -84,11 +83,11 @@
 }
 
 .show-beach-card-info:hover {
-    padding: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    position: relative;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
 }
 
 #show-info-ride-joiners {
@@ -109,18 +108,40 @@
   .show-cards {
     grid-template-columns: 1fr;
   }
+  .show-info-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
   .show-cards {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+  }
+
+  .show-info-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .show-info-ride {
+  margin: 16px 16px 16px 0px ;
   }
 }
 
 /*Medium devices (tablets, 768px and up)*/
-@media (min-width: 1200px) {
+@media (min-width: 768px) {
   .show-cards {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .show-info-container {
+    display: flex;
+  }
+
+  .show-info-ride {
+  height: 100vh;
+  margin: 16px 16px 16px 0px ;
   }
 }
