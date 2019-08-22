@@ -117,6 +117,33 @@
           </ul>
         <% end %>
       </div>
+
+
+
+      <div class="show-card">
+
+        <div class="show-card-info">
+          <div style="width: 100%">
+            <div  class="pl-2" style="overflow: scroll;height: 80px;">
+              <% @ride.messages.each do |message| %>
+              <p class="overflow-hidden">
+                <strong><%= message.user.username %>:</strong>
+                <%= message.message %>
+              </p>
+              <% end %>
+            </div>
+            <%= simple_form_for [@ride, Message.new] do |f|%>
+             <%= f.input :message,
+               class: "form-control block",
+               placeholder: "send a message",
+               label: false
+             %>
+             <%= f.submit class: "btn btn-warning btn-block" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
     <% end %>
   </div>
 

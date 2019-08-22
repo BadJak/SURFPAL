@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :rides, only: [:index, :show] do
     resources :userrides,  only: [:create]
+    resources :messages,  only: [:create]
   end
 end
