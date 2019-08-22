@@ -143,6 +143,36 @@
           </div>
         </div>
       </div>
+<!-- /////////////////// Review card //////////////////// -->
+     <div class="show-card">
+
+       <div class="show-card-info">
+         <div style="width: 100%">
+           <div  class="pl-2" style="overflow: scroll;height: 80px;">
+             <% @ride.beach.reviews.each do |review| %>
+                   <p class="overflow-hidden">
+                     <strong><%= review.user.username %>:</strong>
+                     <%= review.description %>
+                     <%= review.rating %>
+                   </p>
+             <% end %>
+           </div>
+             <%= simple_form_for [@ride, Review.new] do |f|%>
+              <%= f.input :description,
+                class: "form-control block",
+                placeholder: "write a review",
+                label: false
+              %>
+              <%= f.input :rating,
+                class: "form-control block",
+                placeholder: "rate!",
+                label: false
+              %>
+              <%= f.submit class: "btn btn-warning btn-block" %>
+             <% end %>
+         </div>
+       </div>
+     </div>
 
     <% end %>
   </div>

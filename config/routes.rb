@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :rides, only: [:index, :show] do
     resources :userrides,  only: [:create]
     resources :messages,  only: [:create]
+    resources :reviews,  only: [:create]
   end
 end

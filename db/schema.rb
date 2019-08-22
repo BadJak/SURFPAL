@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_22_104348) do
+ActiveRecord::Schema.define(version: 2019_08_22_144151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 2019_08_22_104348) do
     t.datetime "updated_at", null: false
     t.index ["ride_id"], name: "index_messages_on_ride_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "beach_id"
+    t.bigint "user_id"
+    t.integer "rating"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["beach_id"], name: "index_reviews_on_beach_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "rides", force: :cascade do |t|
@@ -84,6 +95,8 @@ ActiveRecord::Schema.define(version: 2019_08_22_104348) do
 
   add_foreign_key "messages", "rides"
   add_foreign_key "messages", "users"
+  add_foreign_key "reviews", "beaches"
+  add_foreign_key "reviews", "users"
   add_foreign_key "rides", "beaches"
   add_foreign_key "userrides", "rides"
   add_foreign_key "userrides", "users"
