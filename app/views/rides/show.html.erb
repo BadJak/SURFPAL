@@ -31,6 +31,8 @@
         </div>
       </div>
 
+
+    <% if !user_signed_in? || current_user.rides.where(id: @ride.id).blank? %>
     <div class="show-card">
       <img src="https://images.unsplash.com/photo-1526485641275-3b11a42acd44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
       <div class="show-card-info">
@@ -41,6 +43,18 @@
         </div>
       </div>
     </div>
+    <% else %>
+      <div class="show-card">
+        <h1 style="color: #61A1F9">Joined Riders:</h1>
+        <div class="show-card-info">
+          <div class="row">
+           <% @ride.users.each do |user| %>
+            <p class="ml-3"><i class="fas fa-swimmer mr-3"></i><%= user.username %> 🤙</p>
+           <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
 
     </div>
 
