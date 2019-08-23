@@ -1,41 +1,77 @@
-<h1>My Profile</h1>
+<div class="show-banner-container">
 
-<!--User profile picture-->
+  <div class="profile-banner">
+    <div >
+      <%= link_to edit_user_path(@user), method: :get do %>
+      <h4>Edit <i class="fas fa-pencil-alt"></i></h4>
+      <% end %>
+    </div>
+    <h1 id="profile-header"><%= @user.username %></h1>
+    <div>
+      <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-extralarge centered-profile-pic">
+    </div>
 
-<!--surf level-->
-<div class="dropdown">Level</div>
-  <div class="dropdown-content">
-    <a href="#">Beginner</a>
-    <a href="#">Intermediate</a>
-    <a href="#">Pro</a>
   </div>
+
 </div>
 
-<!--Group or solo rides?-->
-<div class="dropdown">Group or Solo?</div>
-  <div class="dropdown-content">
-    <a href="#">Group ride</a>
-    <a href="#">Solo ride</a>
-  </div>
+<div class="show-profile-container">
+
+  <div class="row">
+
+      <div class="col-12 col-lg-4">
+        <div class="profile-info-card">
+          <div class="profile-info-content">
+            </h2><h2 style="color: #306D69"></strong> Paris, France </strong></h2>
+            <h5><strong>Age: </strong> <%= @user.age %></h5>
+            <h5><strong>Surf experience: </strong> <%= @user.level %></h5>
+            <h5 style="text-align: justify;"><strong>Bio: </strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea. </h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <div class="profile-ride-card">
+          <div class="profile-ride-content">
+            <h2>Rides history</h2>
+            <br>
+            <h4> <strong><%= @user.rides.count  %></strong> ride(s) joined in the past</h4>
+            <br>
+            <% if @user.rides.empty? %>
+              <% else %>
+                <h5> Last rides joined: </h5>
+                <ul style="list-style-type: none;">
+                  <% sorted_rides = @user.rides.sort_by {|ride| (ride.date) } %>
+                  <% sorted_rides.each do |ride| %>
+                    <li>
+                      <%= link_to ride_path(ride), target: :_blank do  %>
+                      <h6> <%= ride.beach.name %> on <%= ride.date %></h6>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <div class="profile-ride-card">
+          <div class="profile-ride-content">
+            <h2>Other stuff</h2>
+            <br>
+            <h4> Coming soon</h4>
+            <br>
+            <ul style="list-style-type: none;">
+              <li>
+                <h5> ...</h5>
+                <h5> ...</h5>
+                <h5> ...</h5>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
 </div>
-
-<!--user age-->
-<div class="dropdown">Age</div>
-    <a href="#">14-17</a->
-    <a href="#">18-23</a>
-    <a href="#">24-29</a>
-    <a href="#">30-39</a>
-    <a href="#">40-49</a>
-    <a href="#">50-59</a>
-    <a href="#">60+</a>
-
-
-<!--current location-->
-
-
-
-<!--past rides-->
-
-
-
-
