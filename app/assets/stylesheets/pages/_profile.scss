@@ -1,0 +1,64 @@
+.show-profile-container {
+  background-color: white;
+  margin: 0px 16px 16px 16px;
+  border-radius: 3px;
+  border: 1px solid rgb(235,235,235);
+  z-index: 1;
+}
+
+.edit-profile-container {
+  background-color: white;
+  padding: 16px;
+  border-radius: 3px;
+  border: 1px solid rgb(235,235,235);
+  margin: 16px auto;
+  width: 400px;
+}
+
+.profile-info-card {
+  display: flex;
+  background: white;
+  padding: 16px;
+  position: relative;
+}
+
+.profile-info-card a {
+  text-decoration: none;
+  color: $light-gray;
+  }
+  a:hover {
+  color: $orange;
+}
+
+.profile-info-card .profile-info-content {
+  flex-grow: 1;
+  padding-top: 80px;
+}
+
+.profile-info-card .profile-info-content h2 {
+  color: #306D69;
+  font-weight: bolder;
+}
+
+.centered-profile-pic {
+  position: absolute;
+  left: 56px;
+  top: 140px;
+  width: 180px;
+  z-index: 3;
+}
+
+.profile-ride-card {
+  background: white;
+  padding:16px;
+}
+
+.profile-ride-card .profile-ride-content {
+  flex-grow: 1;
+}
+
+.profile-ride-card .profile-ride-content h2 {
+  color: #306D69;
+  font-weight: bolder;
+}
+

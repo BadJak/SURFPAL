@@ -17,6 +17,18 @@
 .avatar-large {
   width: 80px;
   border-radius: 50%;
+
+}
+
+.avatar-extralarge {
+  width: 140px;
+  border-radius: 50%;
+  border: white 2px solid;
+}
+
+.avatar-extralarge:hover {
+  box-shadow: 0 0px 10px rgba(4,150,255,0.2);
+  border: $orange 4px solid;
 }
 
 .avatar-bordered {
