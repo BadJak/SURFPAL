@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new
+    authorize @review
     @ride = Ride.find(params[:ride_id])
     @review.ride = @ride
     @review.user = current_user

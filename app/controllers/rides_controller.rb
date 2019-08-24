@@ -7,7 +7,8 @@ class RidesController < ApplicationController
   def index
     create
     if params[:location].present? && params[:date].present? && params[:time].present? && params[:experience].present?
-      unsorted_rides = Ride.near(params[:location], 100).where(date: Date.strptime(params[:date][:date], '%Y-%m-%d'), time_slot: params[:time])
+      @rides = policy_scope(Ride)
+      unsorted_rides = @rides.near(params[:location], 100).where(date: Date.strptime(params[:date][:date], '%Y-%m-%d'), time_slot: params[:time])
       score = "#{params[:experience].downcase}_score"
       @rides = unsorted_rides.sort_by { |k| -k[score]}
         if @rides.empty?
@@ -31,6 +32,7 @@ class RidesController < ApplicationController
 
   def show
     @ride = Ride.find(params[:id])
+    authorize @ride
   end
 
   def format_date(date, time)

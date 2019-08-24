@@ -23,5 +23,6 @@ before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def find_user
     @user = User.find(params[:id])
+    authorize @user
   end
 end
