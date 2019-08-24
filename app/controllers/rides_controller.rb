@@ -51,7 +51,7 @@ class RidesController < ApplicationController
 
   def create
     @rides = Ride.near(params[:location], 100)
-    binding.pry
+    raise
     result = @rides.find do |ride|
       Date.strptime(params[:date][:date], '%Y-%m-%d') == ride.date &&
       params[:time] == ride.time_slot
