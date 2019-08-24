@@ -1,6 +1,5 @@
 require 'date'
 require 'json'
-require 'open-uri'
 
 class RidesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
@@ -82,9 +81,9 @@ class RidesController < ApplicationController
   end
 
   def fetch_data(type, spot_id)
-    url = "http://services.surfline.com/kbyg/spots/forecasts/#{type}?spotId=#{spot_id}&days=6&intervalHours=6"
-    data_serialized = open(url).read
-    surfline_data = JSON.parse(data_serialized)
+    conn = Faraday.new(:url => 'http://services.surfline.com')
+    response = conn.get "/kbyg/spots/forecasts/#{type}?spotId=#{spot_id}&days=6&intervalHours=6"
+    surfline_data = JSON.parse(response.body)
     data = surfline_data['data']["#{type}"]
     selected_item = data.select do |item|
       item['timestamp'] == format_date(params[:date], params[:time])
