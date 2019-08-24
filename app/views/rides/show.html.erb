@@ -199,25 +199,17 @@
     <!-- /////////////////// CHAT ROOM //////////////////// -->
 
           <div class="show-beach-card">
+            
               <% if policy(Message).create? %>
 
-                <div  class="pl-2" style="overflow: scroll;height: 80px;">
-
-                <% @ride.messages.each do |message| %>
-                  <p class="overflow-hidden">
-                    <strong><%= message.user.username %>:</strong>
-                    <%= message.message %>
-                  </p>
-                <% end %>
+                <div  class="pl-2" style="overflow: scroll;height: 80px;" id='messages'>
+                  <% @ride.messages.each do |message| %>
+                    <%= render 'messages/show', message: message %>
+                  <% end %>
                 </div>
-                <%= simple_form_for [@ride, Message.new] do |f|%>
-                  <%= f.input :message,
-                    class: "form-control block",
-                    placeholder: "send a message",
-                    label: false
-                  %>
-                <%= f.submit class: "btn btn-warning btn-block" %>
-                <% end %>
+                <div id="message-ajax">
+                 <%= render 'messages/form', ride: @ride, message: Message.new  %>
+                </div>
               <% end %>
           </div>
 

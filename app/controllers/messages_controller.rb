@@ -7,10 +7,15 @@ class MessagesController < ApplicationController
     @message.ride = @ride
     @message.user = current_user
     if @message.save
-      redirect_to ride_path(@ride)
+      respond_to do |format|
+        format.html { redirect_to ride_path(@ride) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb
+      end
     else
-      flash[:alert] = ""
-      redirect_to ride_path(@ride)
+      respond_to do |format|
+        format.html { render 'rides/show' }
+        format.js  # <-- idem
+      end
     end
 
   end

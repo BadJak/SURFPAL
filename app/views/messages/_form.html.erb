@@ -1,0 +1,8 @@
+<%= simple_form_for [ride, message], remote: true do |f|%>
+  <%= f.input :message,
+    class: "form-control block",
+    placeholder: "send a message",
+    label: false
+  %>
+ <%= f.submit class: "btn btn-warning btn-block" %>
+<% end %>
