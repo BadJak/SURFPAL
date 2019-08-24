@@ -12,14 +12,6 @@
   position: relative;
 }
 
-.show-info-beach {
-  flex-grow: 1;
-  display: grid;
-  grid-template-columns: 1fr;
-  margin: 16px;
-  background: white;
-}
-
 .show-beach-card {
   overflow: hidden;
   background: white;
@@ -53,16 +45,6 @@
   font-size: 24px;
 }
 
-.show-info-ride {
-  height: 100vh;
-  position: sticky;
-  margin: 16px 16px 16px 16px ;
-  padding:2px;
-  top: 0px;
-  border-radius: 3px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
-
 .show-beach-card-info:hover {
   padding: 8px;
   display: flex;
@@ -77,7 +59,7 @@
   margin: 16px;
 }
 
-.show-info-ride > img {
+.show-ride-info-container > img {
   width: 100%;
 }
 
@@ -86,43 +68,15 @@
 
 /*Smallest device*/
 @media (min-width: 100px) and (max-width: 575px) {
-  .show-cards {
-    grid-template-columns: 1fr;
-  }
-  .show-info-container {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
+
 }
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
-  .show-cards {
-    grid-template-columns: 1fr;
-  }
 
-  .show-info-container {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .show-info-ride {
-  margin: 16px 16px 16px 0px ;
-  }
 }
 
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
-  .show-cards {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
 
-  .show-info-container {
-    display: flex;
-  }
-
-  .show-info-ride {
-  height: 100vh;
-  margin: 16px 16px 16px 0px ;
-  }
 }
