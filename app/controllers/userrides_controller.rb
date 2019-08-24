@@ -2,6 +2,7 @@ class UserridesController < ApplicationController
 
   def create
     @userride = Userride.new
+    authorize @userride
     @ride = Ride.find(params[:ride_id])
     @userride.ride = @ride
     @userride.user = current_user

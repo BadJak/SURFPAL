@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
+    authorize @message
     @ride = Ride.find(params[:ride_id])
     @message.ride = @ride
     @message.user = current_user
@@ -16,6 +17,7 @@ class MessagesController < ApplicationController
         format.js  # <-- idem
       end
     end
+
   end
 
   private

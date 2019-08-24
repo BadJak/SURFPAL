@@ -2,8 +2,10 @@
 
   <div class="profile-banner">
     <div>
-      <%= link_to edit_user_path(@user), method: :get do %>
-      <h4>Edit <i class="fas fa-pencil-alt"></i></h4>
+      <% if policy(@user).edit? %>
+        <%= link_to edit_user_path(@user), method: :get do %>
+        <h4>Edit <i class="fas fa-pencil-alt"></i></h4>
+        <% end %>
       <% end %>
     </div>
     <h1 id="profile-header"><%= @user.username %></h1>
