@@ -2,3 +2,38 @@
   display: flex;
   background: white;
 }
+
+.show-beach-info-container {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 16px;
+  background: white;
+}
+
+.show-ride-info-container {
+  height: 100vh;
+  position: sticky;
+  margin: 16px 16px 16px 16px ;
+  padding:2px;
+  top: 0px;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/*Media Queries*/
+
+/*Smallest device*/
+@media (min-width: 100px) and (max-width: 575px) {
+
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+
+}
