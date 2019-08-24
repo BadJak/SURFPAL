@@ -28,25 +28,38 @@
   margin: 24px 24px 24px 24px;
 }
 
-.beach-icons {
-  font-size: 32px;
-  padding: 12px;
+///////////// BEACH ICONS FOR RESULTS PAGE (INDEX) ////////////////
+.results-beach-icons {
+  font-size: 24px;
 }
 
-#beach-icon-on {
+#results-beach-icon-on {
+  color: $dark-grey;
+}
+
+#results-beach-icon-on:hover {
+  color: $orange;
+}
+
+#results-beach-icon-off {
+  color: $light-grey;
+}
+
+///////////// BEACH ICONS FOR THE SHOW PAGE ////////////////
+.show-beach-icons {
+  font-size: 32px;
+  padding: 16px;
+}
+
+#show-beach-icon-on {
   padding: 12px;
   color: $dark-blue;
 }
 
-#beach-icon-on:hover {
+#show-beach-icon-on:hover {
   color: $orange;
 }
 
-#beach-icon-off {
-  padding: 8px;
-  color: $grey;
-}
-
-#beach-icon-off:hover {
+#show-beach-icon-off {
   color: $light-grey;
 }

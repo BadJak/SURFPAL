@@ -8,8 +8,9 @@ class RidesController < ApplicationController
   def index
     create
     if params[:location].present? && params[:date].present? && params[:time].present? && params[:experience].present?
-      unsorted_rides = Ride.near(params[:location], 100).where(date: Date.strptime(params[:date][:date], '%Y-%m-%d'), time_slot: params[:time], experience: params[:experience])
-      @rides = unsorted_rides.sort_by { |k| -k[:scoring]}
+      unsorted_rides = Ride.near(params[:location], 100).where(date: Date.strptime(params[:date][:date], '%Y-%m-%d'), time_slot: params[:time])
+      score = "#{params[:experience].downcase}_score"
+      @rides = unsorted_rides.sort_by { |k| -k[score]}
         if @rides.empty?
           results = Geocoder.search(params[:location])
           @markers = {
@@ -51,8 +52,7 @@ class RidesController < ApplicationController
     @rides = Ride.near(params[:location], 100)
     result = @rides.find do |ride|
       Date.strptime(params[:date][:date], '%Y-%m-%d') == ride.date &&
-      params[:time] == ride.time_slot &&
-      params[:experience] == ride.experience
+      params[:time] == ride.time_slot
     end
     if result.nil?
       @beaches = Beach.near(params[:location], 100)
@@ -62,7 +62,6 @@ class RidesController < ApplicationController
         @ride = Ride.create(
           date: Date.strptime(params[:date][:date], '%Y-%m-%d'),
           time_slot: params[:time],
-          experience: params[:experience],
           beach_id: beach.id,
           wave_height: wave_info['surf_height'],
           swell_height: wave_info['swell_height'],
@@ -73,7 +72,10 @@ class RidesController < ApplicationController
           wind_gust: wind_info['wind_gust'],
           longitude: beach.longitude,
           latitude: beach.latitude,
-          scoring: Ride.new.score(wave_info, wind_info, params[:experience])
+          rookie_score: Ride.new.score(wave_info, wind_info, "Rookie"),
+          beginner_score: Ride.new.score(wave_info, wind_info,"Beginner"),
+          advanced_score: Ride.new.score(wave_info, wind_info,"Advanced"),
+          pro_score: Ride.new.score(wave_info, wind_info,"Pro")
           )
       end
     end

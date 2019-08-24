@@ -1,10 +1,9 @@
-.first_card {
+.results-firstcard {
   background-size: cover;
-  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.hertz.ma/upload/stuff/images/bouznika%20plage.jpg);
+  background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80);
   background-position: center;
-  height: 240px;
   border-radius: 3px;
-  border: solid 2px $light-gray;
+  height: 236px;
   display: grid;
   text-align: center;
   justify-content: space-around;
@@ -12,34 +11,59 @@
   font-weight: bolder;
   font-size: 18px;
   padding: 40px 0px 0px 0px;
-  margin: 16px 16px 0px 16px;
+  margin: 2px;
 }
 
-.first_card:hover {
+.results-firstcard:hover {
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  border: solid 4px $dark-orange;
 }
 
-.cards {
+.results-cards {
   width: 100%;
-  display: grid;
-  grid-template-columns:1fr 1fr;
-  grid-gap: 16px;
-  padding: 16px;
-  border: solid 2px $light-gray;
+  background: white;
+  border-radius: 3px;
+  // display: grid;
+  grid-template-columns: 1fr;
+  margin: 16px;
+  // flex-grow:1;
+  a {
+    text-decoration: none;
+    }
+    a:hover {
+            text-decoration: none;
+            }
 }
 
-.card {
-  background-size: cover;
-  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1502209944943-85c1d6146367?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80);
-  background-position: center;
+.results-othercards {
+  overflow: hidden;
   height: 160px;
-  border-radius: 3px;
+  background: white;
   display: flex;
-  text-align: center;
-  justify-content: space-around;
-  color: white;
-  font-size: 12px;
+  align-items:center;
+  margin: 16px 0px 16px 0px ;
+  border: solid 1px $light-grey;
+  border-radius: 3px;
+  a {
+    color: rgba(0,0,0,0.9);
+    }
+    a:hover {
+            text-decoration: none;
+            color: rgba(0,0,0,0.9);
+            }
+}
+
+.results-othercards:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.results-othercards > img {
+  height: 100%;
+  width: 256px;
+  object-fit: cover;
+}
+
+.results-othercards-info {
+  padding: 16px;
 }
 
 .card:hover{
@@ -53,16 +77,5 @@
   margin: 0;
   text-align: left;
   padding: 8px;
-}
-
-#outer-card {
-  border: solid 0.5px rgba(0,0,0,0.2);
-}
-
-#card-info {
-  font-size: 24px;
-  opacity: .7;
-  padding: 8px;
-  text-align: left;
 }
 
