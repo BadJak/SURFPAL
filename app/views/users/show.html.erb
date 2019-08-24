@@ -8,7 +8,11 @@
     </div>
     <h1 id="profile-header"><%= @user.username %></h1>
     <div>
+      <% if @user.photo.blank? %>
       <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-extralarge centered-profile-pic">
+      <% else %>
+      <%= cl_image_tag @user.photo.url, alt: "alttext", class: "avatar-extralarge centered-profile-pic" %>
+      <% end %>
     </div>
 
   </div>

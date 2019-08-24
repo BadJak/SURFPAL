@@ -12,4 +12,7 @@ class User < ApplicationRecord
   has_many :beaches, through: :reviews
 
   validates :username, presence: true, uniqueness: true
+
+  mount_uploader :photo, PhotoUploader
+
 end
