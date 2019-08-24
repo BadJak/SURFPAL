@@ -1,9 +1,9 @@
 class Ride < ApplicationRecord
   belongs_to :beach
-  has_many :userrides
+  has_many :userrides, dependent: :destroy
   has_many :users, through: :userrides
 
-  has_many :messages
+  has_many :messages, dependent: :destroy
 
   validates :date, presence: true
   validates :time_slot, presence: true
@@ -11,14 +11,20 @@ class Ride < ApplicationRecord
   geocoded_by :beach
 
   def score(wave_info, wind_info, experience)
+    return scoring = wave_score(wave_info, experience) * wind_score(wind_info)
+  end
+
+  def wave_score(wave_info, experience)
     sh = surf_height(wave_info['surf_height'], experience)
     sp = swell_period(wave_info['swell_period'])
     wave_scoring = (sh + sp) / 2.0
+  end
+
+  def wind_score(wind_info)
     ws = wind_speed(wind_info['wind_speed'])
     wg = wind_gust(wind_info['wind_gust'] - wind_info['wind_speed'])
     wd = wind_direction(wind_info['wind_direction'])
     wind_scoring = (ws * 30 + wg * 10 + wd * 10) / (50 * 5.0)
-    return scoring = wave_scoring * wind_scoring
   end
 
   def surf_height(value, experience)

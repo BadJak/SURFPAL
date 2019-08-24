@@ -1,7 +1,18 @@
-.show-banner {
+.error-banner {
   overflow: hidden;
   background: white;
   height: 360px;
+  margin: 16px ;
+  padding: 24px;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.show-banner {
+  overflow: hidden;
+  background: white;
+  height: 300px;
   width: 100vw;
   margin: 16px 16px 0px 16px ;
   border-radius: 3px;
@@ -24,7 +35,7 @@
 }
 
 .profile-banner a {
-  color:$light-gray;
+  color: $light-orange;
   text-decoration:none;
 }
 
