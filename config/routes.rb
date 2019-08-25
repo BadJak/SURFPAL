@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :users, only: [:show, :edit, :update]
   resources :rides, only: [:index, :show] do
-    resources :userrides,  only: [:create]
+    resources :userrides,  only: [:show, :create, :destroy]
     resources :messages,  only: [:create]
-    resources :reviews,  only: [:create]
+    resources :reviews,  only: [:new, :create]
   end
 end
