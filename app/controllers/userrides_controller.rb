@@ -14,4 +14,24 @@ class UserridesController < ApplicationController
     end
   end
 
+  def destroy
+
+    @ride = Ride.find(params[:id])
+    @userride = Userride.where(ride_id: @ride.id, user_id: current_user.id).first
+    authorize @userride
+    if @userride.destroy
+      redirect_to ride_path(@ride)
+      flash[:alert] = "You have left this ride"
+    else
+      redirect_to ride_path(@ride)
+      flash[:alert] = "Something went wrong. Please try again"
+    end
+
+  end
+
+  private
+  def userride_params
+    params.require(:userride).permit(:ride_id, :user_id)
+  end
+
 end

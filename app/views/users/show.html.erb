@@ -24,10 +24,10 @@
       <div class="col-12 col-lg-4">
         <div class="profile-info-card">
           <div class="profile-info-content">
-            </h2><h2 style="color: #306D69"></strong> Paris, France </strong></h2>
+            </h2><h2 style="color: #306D69">from </strong> <%= @user.hometown %> </strong></h2>
             <h5><strong>Age: </strong> <%= @user.age %></h5>
             <h5><strong>Surf experience: </strong> <%= @user.level %></h5>
-            <h5 style="text-align: justify;"><strong>Bio: </strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea. </h5>
+            <h5 style="text-align: justify;"><strong>Bio: </strong> <%=   @user.bio %></h5>
           </div>
         </div>
       </div>
@@ -41,13 +41,12 @@
             <br>
             <% if @user.rides.empty? %>
               <% else %>
-                <h5> Last rides joined: </h5>
                 <ul style="list-style-type: none;">
                   <% sorted_rides = @user.rides.sort_by {|ride| (ride.date) } %>
                   <% sorted_rides.each do |ride| %>
                     <li>
                       <%= link_to ride_path(ride), target: :_blank do  %>
-                      <h6> <%= ride.beach.name %> on <%= ride.date %></h6>
+                      <h6> 🏄 <%= ride.beach.name %> on <%= ride.date %></h6>
                       <% end %>
                     </li>
                   <% end %>
