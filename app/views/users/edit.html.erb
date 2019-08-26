@@ -1,14 +1,12 @@
-<div class= "edit-container">
-  <div class="edit-profile-container">
-    <h2 style="color: #306D69; text-align: center;"><strong> Update your profile</strong>  </h2>
-    <!--User profile picture-->
-    <%= simple_form_for @user do |f| %>
-      <%= f.input :username %>
-      <%= f.input :hometown %>
-      <%= f.input :age %>
-      <%= f.input :level, collection: ['Rookie', 'Beginner', 'Advanced', 'Pro' ], label: 'How much surfing experience do you have?' %>
-      <%= f.input :bio %>
-      <%= f.submit "Save", class: "btn btn-warning btn-lg" %>
-    <% end %>
-  </div>
+<div class="edit-container">
+  <h2 style="color: #306D69; text-align: center;"><strong> Update your profile</strong>  </h2>
+  <!--User profile picture-->
+  <%= simple_form_for @user do |f| %>
+    <%= f.input :username %>
+    <%= f.input :age %>
+    <%= f.input :level, collection: ['Rookie', 'Beginner', 'Advanced', 'Pro' ], label: 'How much surfing experience do you have?' %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.submit "Save", class: "btn btn-warning btn-lg" %>
+  <% end %>
 </div>

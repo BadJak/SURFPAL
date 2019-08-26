@@ -8,6 +8,7 @@ class Beach < ApplicationRecord
   validates :city, presence: true
 
   geocoded_by :name
+  mount_uploader :photo, PhotoUploader
 
   include PgSearch
   pg_search_scope :search_by_name_and_city,
