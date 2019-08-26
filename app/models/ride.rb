@@ -10,21 +10,21 @@ class Ride < ApplicationRecord
 
   geocoded_by :beach
 
-  def score(wave_info, wind_info, experience)
-    return scoring = wave_score(wave_info, experience) * wind_score(wind_info)
+  def score(info, experience)
+    @scoring = wave(info, experience) * wind(info)
   end
 
-  def wave_score(wave_info, experience)
-    sh = surf_height(wave_info['surf_height'], experience)
-    sp = swell_period(wave_info['swell_period'])
-    wave_scoring = (sh + sp) / 2.0
+  def wave(info, experience)
+    sh = surf_height(info['surf_height'], experience)
+    sp = swell_period(info['swell_period'])
+    return wave_scoring = (sh * 8 + sp * 2)/10.0
   end
 
-  def wind_score(wind_info)
-    ws = wind_speed(wind_info['wind_speed'])
-    wg = wind_gust(wind_info['wind_gust'] - wind_info['wind_speed'])
-    wd = wind_direction(wind_info['wind_direction'])
-    wind_scoring = (ws * 30 + wg * 10 + wd * 10) / (50 * 5.0)
+  def wind(info)
+    ws = wind_speed(info['wind_speed'])
+    wg = wind_gust(info['wind_gust'])
+    wd = wind_direction(info['wind_direction'])
+    return wind_scoring = (ws * 30 + wg * 10 + wd * 10)/50/5.0
   end
 
   def surf_height(value, experience)

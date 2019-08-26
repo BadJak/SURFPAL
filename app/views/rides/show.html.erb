@@ -169,15 +169,19 @@
       <div class="row justify-content-between">
         <div>
           <h3 style="padding:0px 16px 0px 16px;"> Reviews (<%=@ride.beach.reviews.count%>)</h3>
-          <div class="inline-stars">
-            <% average = Review.where(beach_id: @ride.beach_id).average(:rating) %>
-            <% average.round.times do %>
-              <h2 id="inline-stars-big"> <i class="fas fa-star"></i></h2>
-            <% end %>
-            <% (5 - average.round).times do %>
-              <h2 id="inline-stars-big"> <i class="far fa-star"></i></h2>
-            <% end %>
-          </div>
+          <% if Review.where(beach_id: @ride.beach_id).empty? %>
+            <p style="padding-left:16px"> Be the first to review this beach.</p>
+          <% else %>
+            <div class="inline-stars">
+              <% average = Review.where(beach_id: @ride.beach_id).average(:rating) %>
+              <% average.round.times do %>
+                <h2 id="inline-stars-big"> <i class="fas fa-star"></i></h2>
+              <% end %>
+              <% (5 - average.round).times do %>
+                <h2 id="inline-stars-big"> <i class="far fa-star"></i></h2>
+              <% end %>
+            </div>
+          <% end %>
         </div>
         <% if policy(Review).create? %>
           <div >
