@@ -10,21 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_24_145801) do
+ActiveRecord::Schema.define(version: 2019_08_26_192357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "beaches", force: :cascade do |t|
     t.string "name"
-    t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "longitude"
     t.float "latitude"
-    t.string "surfline_name"
-    t.string "surfline_id"
     t.string "photo"
+    t.text "description"
+    t.string "country"
   end
 
   create_table "messages", force: :cascade do |t|
