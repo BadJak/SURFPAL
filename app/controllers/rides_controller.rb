@@ -1,6 +1,5 @@
 require 'date'
 require 'json'
-API_KEY = "9591ab6696f44435ab0162000192408"
 
 class RidesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
@@ -88,7 +87,7 @@ class RidesController < ApplicationController
 
   def fetch_data(lng,lat,tp)
     conn = Faraday.new(:url => "http://api.worldweatheronline.com/premium/v1/marine.ashx")
-    response = conn.get "?key=#{API_KEY}&format=json&q=#{lng},#{lat}&tp=#{tp}"
+    response = conn.get "?key=#{ENV["WWO_API_KEY"]}&format=json&q=#{lng},#{lat}&tp=#{tp}"
     api_data = JSON.parse(response.body)
     data = api_data['data']['weather']
     selected_date = data.select do |item|

@@ -8,15 +8,14 @@ before_action :find_ride, only: [:new, :create]
 
   def create
     @review = Review.new(review_params)
-    raise
-    authorize @review
     @review.beach = @ride.beach
     @review.user = current_user
+    authorize @review
     if @review.save
       redirect_to ride_path(@ride)
     else
-      flash[:alert] = "couldn't review"
-      redirect_to ride_path(@ride)
+      flash[:alert] = "Couldn't review"
+      render :new
     end
   end
 
@@ -27,6 +26,7 @@ before_action :find_ride, only: [:new, :create]
 
   def find_ride
     @ride = Ride.find(params[:ride_id])
+
   end
 
 end
