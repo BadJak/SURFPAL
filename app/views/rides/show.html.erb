@@ -183,7 +183,7 @@
             </div>
           <% end %>
         </div>
-        <% if policy(Review).create? %>
+        <% if !Userride.where(ride_id: @ride.id, user_id: current_user.id).blank? %>
           <div >
             <%= link_to new_ride_review_path(@ride), method: :get do %>
               <button id="classic-btn">Add a review <i class="fas fa-pencil-alt"></i></button>
