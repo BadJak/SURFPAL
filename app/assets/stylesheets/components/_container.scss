@@ -3,21 +3,65 @@
   background: white;
 }
 
-.show-beach-info-container {
+.show-ride-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  background: white;
+}
+
+.show-join-card-sticky-container {
+  height: 95vh;
+  position: sticky;
+  margin: 16px;
+  padding: 2px;
+  top: 0px;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.show-join-card-content-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: linear-gradient(270deg, #00a2b3 0%, #0c98b3 16%, #118eb3 33%, #1284b3 50%, #107ab3 66%, #0b71b3 83%, #0067b3 100%);
+  border: 1px solid rgb(235,235,235);
+  margin: 8px;
+}
+
+.show-beach-card-container {
   flex-grow: 1;
   display: grid;
   grid-template-columns: 1fr;
   margin: 16px;
   background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
-.show-ride-info-container {
-  height: 100vh;
-  position: sticky;
-  margin: 16px 16px 16px 16px ;
-  padding:2px;
-  top: 0px;
+.show-riders-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.show-profile-container {
+  background-color: white;
+  margin: 0px 16px 16px 16px;
   border-radius: 3px;
+  border: 1px solid rgb(235,235,235);
+  z-index: 1;
+}
+
+.edit-container {
+  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://images.unsplash.com/photo-1549248264-3cc5e6fc43e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1191&q=80);
+  background-size: cover;
+  padding: 16px;
+}
+
+.edit-profile-container {
+  background-color: white;
+  padding: 16px;
+  border-radius: 3px;
+  border: 1px solid rgb(235,235,235);
+  width: 400px;
+  margin: 0 auto;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
@@ -26,14 +70,28 @@
 /*Smallest device*/
 @media (min-width: 100px) and (max-width: 575px) {
 
+  .show-ride-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: white;
+  }
+
+  .show-join-card-sticky-container {
+  height: 104px;
+  }
+
+  #surf-content {
+    display: none;
+  }
+
 }
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
 
+
 }
 
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
-
 }

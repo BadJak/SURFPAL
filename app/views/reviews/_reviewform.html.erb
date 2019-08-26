@@ -1,0 +1,10 @@
+<div class= "edit-container">
+  <div class="edit-profile-container">
+    <h2 style="color: #306D69; text-align: center;"><strong> Add your review</strong>  </h2>
+    <%= simple_form_for [@ride, Review.new], remote: true do |f| %>
+      <%= f.input :rating, label: 'Please rate your experience' %>
+      <%= f.input :description, label: 'Please give some details'%>
+      <%= f.submit "Review", class: "btn btn-warning btn-lg" %>
+    <% end %>
+  </div>
+</div>

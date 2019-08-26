@@ -12,16 +12,40 @@
   position: relative;
 }
 
+.show-join-card-content {
+  margin: 8px;
+}
+
 .show-beach-card {
   overflow: hidden;
   background: white;
-  padding: 8px ;
-  margin: 8px;
-  border-radius: 2px;
+  padding: 8px 8px 0px 8px; ;
+  margin: 8px 8px 0px 8px;
+  border-radius: 3px;
+  border: 1px solid rgb(235,235,235);
 }
 
-.show-beach-card:hover {
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+.inline-stars {
+  display: flex;
+  justify-content: flex-start;
+  color: $light-orange;
+  padding-left: 16px;
+}
+
+#inline-stars-small {
+  padding: 0px 0px 8px 0px;
+  font-size: 18px;
+}
+
+#inline-stars-big {
+  padding: 0px 0px 8px 0px;
+  font-size: 24px;
+}
+
+#rating-date {
+  margin: 0px 0px 0px 16px;
+  color: $grey;
+  font-size: 16px;
 }
 
 .show-beach-card-review {
@@ -38,7 +62,8 @@
 }
 
 .show-beach-card-review-content h4 p {
-  margin: 0px;
+  // margin: 0px;
+  // padding: 0px;
 }
 
 .show-card-info h2 {
@@ -58,11 +83,6 @@
   padding: 16px;
   margin: 16px;
 }
-
-.show-ride-info-container > img {
-  width: 100%;
-}
-
 
 /*Media Queries*/
 
