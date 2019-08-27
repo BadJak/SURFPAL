@@ -58,13 +58,21 @@
 
 .results-othercards > img {
   height: 100%;
-  width: 256px;
+  width: 216px;
   object-fit: cover;
 }
 
 .results-othercards-info {
   padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  justify-content: between;
 }
+
+// .results-othercards-title-reviews {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr 1fr;
+// }
 
 .card:hover{
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
