@@ -18,7 +18,7 @@
       <%= link_to  ride_path(@rides.first), target: :_blank do %>
         <div class="results-firstcard">
           <h1><%= @rides&.first&.beach&.name %></h1>
-          <h2><%= @rides&.first["#{params[:experience].downcase}_score"] %></h2>
+          <h2><%= @rides&.first["#{params[:experience].downcase}_score"].round(2) %></h2>
         </div>
       <% end %>
       <br>
@@ -31,8 +31,8 @@
           <%= link_to ride_path(ride), target: :_blank do %>
             <div class="results-othercards-info">
               <h4> <strong><%= ride.beach.name %></strong>  </h6>
-              <h5> <%= ride.beach.city %> </h5>
-              <h6> SurfPal score: <%=  ride["#{params[:experience].downcase}_score"] %> </h6>
+              <h5> <%= ride.beach.country %> </h5>
+              <h6> SurfPal score: <%=  ride["#{params[:experience].downcase}_score"].round(2) %> </h6>
               <div class="results-beach-icons">
                 <i class="fas fa-parking" id="results-beach-icon-on"></i>
                 <i class="far fa-life-ring" id="results-beach-icon-on"></i>
