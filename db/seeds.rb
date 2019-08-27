@@ -6,11 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# request = "http://services.surfline.com/kbyg/spots/forecasts/wave?spotId=5842041f4e65fad6a7708cf6&days=6&intervalHours=6"
-
-# Ride.destroy_all
-# Userride.destroy_all
-# Beach.destroy_all
+Ride.destroy_all
+Userride.destroy_all
+Beach.destroy_all
 
 beaches = []
 beaches_url = []
@@ -24,12 +22,21 @@ beaches_url.each do |beach_url|
   data = html_doc.search('#msw-js-map')
   array = data.first['data-collection']
   data = JSON.parse(array).each do |element|
+    if element['country']['iso'] == 'fr'
+      country = 'France'
+    elsif element['country']['iso'] == 'ma'
+      country = 'Morocco'
+    elsif element['country']['iso'] == 'pt'
+      country = 'Portugal'
+    elsif element['country']['iso'] == 'es'
+      country = 'Spain'
+    end
     beaches << {
       name: element['name'],
       description: element['description'],
       longitude: element['lon'],
       latitude: element['lat'],
-      country: element['country']['iso']
+      country: country
       }
   end
 end
