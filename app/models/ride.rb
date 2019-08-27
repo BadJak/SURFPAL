@@ -11,23 +11,25 @@ class Ride < ApplicationRecord
   geocoded_by :beach
 
   def score(info, experience)
-    @scoring = wave(info, experience) * wind(info)
+    @scoring = wave_score(info, experience) * wind_score(info)
   end
 
-  def wave(info, experience)
-    sh = surf_height(info['surf_height'], experience)
-    sp = swell_period(info['swell_period'])
-    return wave_scoring = (sh * 8 + sp * 2)/10.0
+  def wave_score(info, experience)
+    sh = surf_height_score(info['surf_height'], experience)
+    sp = swell_period_score(info['swell_period'])
+    sd = swell_direction_score(info['swell_direction'])
+
+    return wave_scoring = (sh * 7 + sp * 2 + sd)/10.0
   end
 
-  def wind(info)
-    ws = wind_speed(info['wind_speed'])
-    wg = wind_gust(info['wind_gust'])
-    wd = wind_direction(info['wind_direction'])
+  def wind_score(info)
+    ws = wind_speed_score(info['wind_speed'])
+    wg = wind_gust_score(info['wind_gust'])
+    wd = wind_direction_score(info['wind_direction'])
     return wind_scoring = (ws * 30 + wg * 10 + wd * 10)/50/5.0
   end
 
-  def surf_height(value, experience)
+  def surf_height_score(value, experience)
     scoring = 0.0
     if experience == 'Rookie'
       if value > 5 then scoring = 0.5
@@ -69,7 +71,7 @@ class Ride < ApplicationRecord
     return scoring
   end
 
-  def swell_period(value)
+  def swell_period_score(value)
     if value > 16 then scoring = 5
     elsif value > 13 then scoring = 4.5
     elsif value > 10 then scoring = 4
@@ -79,10 +81,17 @@ class Ride < ApplicationRecord
     end
   end
 
-  def swell_direction(value)
+  def swell_direction_score(value)
+    if (value - 180).abs > 150 then scoring = 0.5
+    elsif (value-180).abs > 120 then scoring = 1
+    elsif (value-180).abs > 90 then scoring = 2
+    elsif (value-180).abs > 60 then scoring = 3
+    elsif (value-180).abs > 30 then scoring = 4
+    else scoring = 5
+    end
   end
 
-  def wind_speed(value)
+  def wind_speed_score(value)
     if value > 30 then scoring = 1
     elsif value > 25 then scoring = 2
     elsif value > 20 then scoring = 3
@@ -92,7 +101,7 @@ class Ride < ApplicationRecord
     end
   end
 
-  def wind_gust(value)
+  def wind_gust_score(value)
     if value > 16 then scoring = 0.5
     elsif value > 13 then scoring = 1
     elsif value > 10 then scoring = 2
@@ -102,7 +111,7 @@ class Ride < ApplicationRecord
     end
   end
 
-  def wind_direction(value)
+  def wind_direction_score(value)
     if (value - 180).abs > 150 then scoring = 0.5
     elsif (value-180).abs > 120 then scoring = 1
     elsif (value-180).abs > 90 then scoring = 2

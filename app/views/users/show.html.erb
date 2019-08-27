@@ -41,13 +41,13 @@
           <div class="profile-ride-content">
             <h2>Rides history</h2>
             <br>
-            <h4> <strong><%= @user.rides.count  %></strong> ride(s) joined in the past</h4>
+            <h4> Last rides joined (<strong><%= @user.rides.count  %></strong>)</h4>
             <br>
             <% if @user.rides.empty? %>
               <% else %>
                 <ul style="list-style-type: none;">
                   <% sorted_rides = @user.rides.sort_by {|ride| (ride.date) } %>
-                  <% sorted_rides.each do |ride| %>
+                  <% sorted_rides.take(5).each do |ride| %>
                     <li>
                       <%= link_to ride_path(ride), target: :_blank do  %>
                       <h6> 🏄 <%= ride.beach.name %> on <%= ride.date %></h6>

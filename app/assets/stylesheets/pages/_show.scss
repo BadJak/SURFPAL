@@ -32,12 +32,19 @@
   padding-left: 16px;
 }
 
-#inline-stars-small {
+.inline-dots {
+  display: flex;
+  justify-content: flex-start;
+  color: $dark-grey;
+  padding-left: 16px;
+}
+
+.inline-stars-small {
   padding: 0px 0px 8px 0px;
   font-size: 18px;
 }
 
-#inline-stars-big {
+.inline-stars-big {
   padding: 0px 0px 8px 0px;
   font-size: 24px;
 }
