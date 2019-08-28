@@ -103,7 +103,7 @@
       <div class="show-beach-card-review-content">
         <div class="row justify-content-between" style="padding:0px 16px 0px 16px">
           <h5> <strong>Wind</strong></h5>
-          <h6><%= @ride.wind_speed_score(@ride[:wind_speed])[1] %> wind coming <%= @ride.wind_compass%>, with <%=@ride.wind_gust_score(@ride[:wind_gust])[1] %>.</h6>
+          <h6><%= @ride.wind_speed_score(@ride[:wind_speed])[1] %> wind (coming 🧭 <%= @ride.wind_compass%>), with <%=@ride.wind_gust_score(@ride[:wind_gust])[1] %>.</h6>
         </div>
       </div>
     </div>
