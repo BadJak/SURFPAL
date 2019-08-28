@@ -32,40 +32,40 @@ class Ride < ApplicationRecord
   def surf_height_score(value, experience)
     scoring = 0.0
     if experience == 'Rookie'
-      if value > 5 then scoring = [0.5,"huge (⚠️ very dangerous for a #{experience})"]
-      elsif value > 3 then scoring = [1,"upper head high (⚠️ dangerous for a #{experience})"]
-      elsif value > 2 then scoring = [2,"head high (💪 hard for a #{experience})"]
-      elsif value > 1.5 then scoring = [3,"chest high (💪 challenging for a #{experience})"]
-      elsif value > 1 then scoring = [4,"waist high (👌 perfect for a #{experience})"]
-      elsif value > 0.5 then scoring = [4.5,"knee high (🤷 why not for a #{experience})"]
-      else scoring = [4,"ankle high (🤷 why not for a #{experience})"]
+      if value > 5 then scoring = [0.5,"huge (⚠️ very dangerous for #{experience} surfers)"]
+      elsif value > 3 then scoring = [1,"upper head high (⚠️ dangerous for #{experience} surfers)"]
+      elsif value > 2 then scoring = [2,"head high (💪 hard for #{experience} surfers)"]
+      elsif value > 1.5 then scoring = [3,"chest high (💪 challenging for #{experience} surfers)"]
+      elsif value > 1 then scoring = [4,"waist high (👌 perfect for #{experience} surfers)"]
+      elsif value > 0.5 then scoring = [4.5,"knee high (🤷 why not for #{experience} surfers)"]
+      else scoring = [4,"ankle high (🤷 why not for #{experience} surfers)"]
       end
     elsif experience == 'Beginner'
-      if value > 5 then scoring = [1,"huge (⚠️ very dangerous for a #{experience})"]
-      elsif value > 3 then scoring = [2,"upper head high (⚠️ potentially dangerous for a #{experience})"]
-      elsif value > 2 then scoring = [3,"head high (💪 challenging for a #{experience})"]
-      elsif value > 1.5 then scoring = [4,"chest high (👌 perfect for a #{experience})"]
-      elsif value > 1 then scoring = [5,"waist high (👌 nice for a #{experience})"]
-      elsif value > 0.5 then scoring = [4,"knee high (🤷 why not for a #{experience})"]
-      else scoring = [2,"ankle high (🙄 boring for a #{experience})"]
+      if value > 5 then scoring = [1,"huge (⚠️ very dangerous for #{experience} surfers)"]
+      elsif value > 3 then scoring = [2,"upper head high (⚠️ potentially dangerous for #{experience} surfers)"]
+      elsif value > 2 then scoring = [3,"head high (💪 challenging for #{experience} surfers)"]
+      elsif value > 1.5 then scoring = [4,"chest high (👌 perfect for #{experience} surfers)"]
+      elsif value > 1 then scoring = [5,"waist high (👌 nice for #{experience} surfers)"]
+      elsif value > 0.5 then scoring = [4,"knee high (🤷 why not for #{experience} surfers)"]
+      else scoring = [2,"ankle high (🙄 boring for #{experience} surfers)"]
       end
     elsif experience == 'Advanced'
-      if value > 5 then scoring = [2,"huge (⚠️ potentially dangerous for a #{experience})"]
-      elsif value > 3 then scoring = [3,"upper head high (💪 challenging for a #{experience})"]
-      elsif value > 2 then scoring = [4,"head high (👌 perfect for a #{experience})"]
-      elsif value > 1.5 then scoring = [5,"chest high (👌 nice for a #{experience})"]
-      elsif value > 1 then scoring = [4,"waist high (🤷 why not for a #{experience})"]
-      elsif value > 0.5 then scoring = [3,"knee high (🙄 boring for a #{experience})"]
-      else scoring = [1,"ankle high (🙄 boring for a #{experience})"]
+      if value > 5 then scoring = [2,"huge (⚠️ potentially dangerous for #{experience} surfers)"]
+      elsif value > 3 then scoring = [3,"upper head high (💪 challenging for #{experience} surfers)"]
+      elsif value > 2 then scoring = [4,"head high (👌 perfect for #{experience} surfers)"]
+      elsif value > 1.5 then scoring = [5,"chest high (👌 nice for #{experience} surfers)"]
+      elsif value > 1 then scoring = [4,"waist high (🤷 why not for #{experience} surfers)"]
+      elsif value > 0.5 then scoring = [3,"knee high (🙄 boring for #{experience} surfers)"]
+      else scoring = [1,"ankle high (🙄 boring for #{experience} surfers)"]
       end
     else
-      if value > 5 then scoring = [5,"huge (💪 challenging for a #{experience})"]
-      elsif value > 3 then scoring = [4.5,"upper head high (👌 perfect for a #{experience})"]
-      elsif value > 2 then scoring = [4,"head high (👌 nice for a #{experience})"]
-      elsif value > 1.5 then scoring = [3,"chest high (🤷 why not for a #{experience})"]
-      elsif value > 1 then scoring = [2,"waist high (🤷 why not for a #{experience})"]
-      elsif value > 0.5 then scoring = [1,"knee high (🙄 boring for a #{experience})"]
-      else scoring = [0.5,"ankle high (🙄 boring for a #{experience})"]
+      if value > 5 then scoring = [5,"huge (💪 challenging for #{experience} surfers)"]
+      elsif value > 3 then scoring = [4.5,"upper head high (👌 perfect for #{experience} surfers)"]
+      elsif value > 2 then scoring = [4,"head high (👌 nice for #{experience} surfers)"]
+      elsif value > 1.5 then scoring = [3,"chest high (🤷 why not for #{experience} surfers)"]
+      elsif value > 1 then scoring = [2,"waist high (🤷 why not for #{experience} surfers)"]
+      elsif value > 0.5 then scoring = [1,"knee high (🙄 boring for #{experience} surfers)"]
+      else scoring = [0.5,"ankle high (🙄 boring for #{experience} surfers)"]
       end
     end
     return scoring

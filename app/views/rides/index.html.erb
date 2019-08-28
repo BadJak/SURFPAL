@@ -32,7 +32,7 @@
         <% next if index == 0 %>
         <div class="results-othercards">
         <img src="https://images.unsplash.com/photo-1499232217236-f8a184148559?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80" class="beach-card-pic">
-        <%= link_to ride_path(ride), target: :_blank do %>
+        <%= link_to ride_path(ride, experience: params[:experience]), target: :_blank do %>
             <div class="results-othercards-info">
               <div>
                 <h4> <strong><%= ride.beach.name %></strong>  </h6>
