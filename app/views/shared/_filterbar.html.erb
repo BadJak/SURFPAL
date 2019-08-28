@@ -9,7 +9,7 @@
               %>
             </div>
             <div class="ml-3">
-              <%= date_field :date, :date, :value => Time.now.strftime('%Y-%m-%d'), min: Date.today, max: (Date.today + 5.days),
+              <%= date_field :date, :date, :value => params[:date][:date], min: Date.today, max: (Date.today + 5.days),
                 class: "filterbord form-control",
                 onchange: "this.form.submit();"
               %>
@@ -26,6 +26,15 @@
             <div class="ml-3">
               <%= select_tag(:experience,
                 options_for_select(['Rookie','Beginner','Advanced', 'Pro'], selected: params[:experience]),
+                {
+                class: "filterbord form-control",
+                  onchange: "this.form.submit();"
+                })
+              %>
+            </div>
+            <div class="ml-3">
+              <%= select_tag(:distance,
+                options_for_select(['25km','50km','75km', '100km'], selected: params[:distance]),
                 {
                 class: "filterbord form-control",
                   onchange: "this.form.submit();"

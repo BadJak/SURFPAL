@@ -8,7 +8,7 @@ class RidesController < ApplicationController
     create
     if params[:location].present? && params[:date].present? && params[:time].present? && params[:experience].present?
       @rides = policy_scope(Ride)
-      unsorted_rides = @rides.near(params[:location], 100).where(date: Date.strptime(params[:date][:date], '%Y-%m-%d'), time_slot: params[:time])
+      unsorted_rides = @rides.near(params[:location],Ride.new.distance(params[:distance])).where(date: Date.strptime(params[:date][:date], '%Y-%m-%d'), time_slot: params[:time])
       score = "#{params[:experience].downcase}_score"
       @rides = unsorted_rides.sort_by { |k| -k[score]}
         if @rides.empty?
@@ -49,20 +49,21 @@ class RidesController < ApplicationController
   private
 
   def create
-    @rides = Ride.near(params[:location], 100)
+    @rides = Ride.near(params[:location],Ride.new.distance(params[:distance]))
     result = @rides.find do |ride|
       Date.strptime(params[:date][:date], '%Y-%m-%d') == ride.date &&
       params[:time] == ride.time_slot
     end
     if result.nil?
-      @beaches = Beach.near(params[:location], 100)
+      @beaches = Beach.near(params[:location],Ride.new.distance(params[:distance]))
       @beaches.each do |beach|
         info = fetch_data(beach[:longitude], beach[:latitude], 6)
+        calcSH = info['swell_height'] * (Ride.new.swell_period_score(info['swell_period']) + Ride.new.swell_direction_score(info['swell_direction'])) * 3 / 5.0
         @ride = Ride.create(
           date: Date.strptime(params[:date][:date], '%Y-%m-%d'),
           time_slot: params[:time],
           beach_id: beach.id,
-          wave_height: info['surf_height'],
+          wave_height: calcSH,
           swell_height: info['swell_height'],
           swell_period: info['swell_period'],
           swell_direction: info['swell_direction'],

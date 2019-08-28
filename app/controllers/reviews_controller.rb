@@ -15,7 +15,7 @@ before_action :find_ride, only: [:new, :create]
       redirect_to ride_path(@ride)
     else
       flash[:alert] = "Couldn't review"
-      render :new
+      render 'reviews/_reviewform', ride: @ride, review: Review.new
     end
   end
 
