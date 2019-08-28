@@ -79,56 +79,33 @@
     </div>
 
     <div class="show-join-card-content-container" id="surf-content-desktop" style="background: white;">
-      <img src="https://static.thenounproject.com/png/2588898-200.png" style="width:80px;">
+      <img src="https://static.thenounproject.com/png/2588898-200.png" style="width:80px; background: #ffae03;">
+      <div class="show-beach-card-review-content">
+        <div class="row justify-content-between" style="padding: 0px 16px 0px 16px;">
+          <h5> <strong>Weather</strong></h5>
+        </div>
+        <h6><%= @ride.air_temp %>°C / <%= @ride.weather_description %> </h6>
+      </div>
+    </div>
+
+    <div class="show-join-card-content-container" id="surf-content-desktop" style="background: white;">
+      <img src="https://static.thenounproject.com/png/2588897-200.png" style="width:80px; background: #ff8811;">
       <div class="show-beach-card-review-content">
         <div class="row justify-content-between" style="padding:0px 16px 0px 16px">
-          <h4> <strong>Weather</strong></h4>
-          <div>
-            <%= small_dots(@ride.wind_speed_score(@ride.wind_speed).round) %>
-            <h5 style="float: right">Sunny 25°C</h5>
-          </div>
+          <h5> <strong>Wave</strong></h5>
+          <h6><%= @ride.surf_height_score(@ride[:wave_height],params[:experience])[1] %> waves, with <%=@ride.swell_period_score(@ride[:swell_period])[1] %> swell.</h6>
         </div>
       </div>
     </div>
 
     <div class="show-join-card-content-container" id="surf-content-desktop" style="background: white;">
-      <img src="https://static.thenounproject.com/png/2588890-200.png" style="width:80px;">
+      <img src="https://static.thenounproject.com/png/2588891-200.png" style="width:80px; background: #fe4e00;" >
       <div class="show-beach-card-review-content">
         <div class="row justify-content-between" style="padding:0px 16px 0px 16px">
-          <h4> <strong>Water</strong></h4>
-          <div>
-            <%= small_dots(@ride.surf_height_score(@ride.wave_height, params[:experience]).round) %>
-            <h5 style="float: right">Cold 17°C</h5>
-          </div>
+          <h5> <strong>Wind</strong></h5>
+          <h6><%= @ride.wind_speed_score(@ride[:wind_speed])[1] %> wind coming <%= @ride.wind_compass%>, with <%=@ride.wind_gust_score(@ride[:wind_gust])[1] %>.</h6>
         </div>
       </div>
-    </div>
-
-    <div class="show-join-card-content-container" id="surf-content-desktop" style="background: white;">
-      <img src="https://static.thenounproject.com/png/2588897-200.png" style="width:80px;">
-      <div class="show-beach-card-review-content">
-        <div class="row justify-content-between" style="padding:0px 16px 0px 16px">
-          <h4> <strong>Wave</strong></h4>
-          <div>
-            <%= small_dots(@ride.surf_height_score(@ride.wave_height, params[:experience]).round) %>
-            <h5 style="float: right">Weak</h5>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="show-join-card-content-container" id="surf-content-desktop" style="background: white;">
-      <img src="https://static.thenounproject.com/png/2588891-200.png" style="width:80px">
-      <div class="show-beach-card-review-content">
-        <div class="row justify-content-between" style="padding:0px 16px 0px 16px">
-          <h4> <strong>Wind</strong></h4>
-          <div>
-            <%= small_dots(@ride.wind_speed_score(@ride.wind_speed).round) %>
-            <h5 style="float: right">Almost none</h5>
-          </div>
-        </div>
-      </div>
-
     </div>
 
   </div>
@@ -137,7 +114,7 @@
 
   <div class="show-beach-card-container">
 
-    <div class="show-beach-card">
+    <div style="padding:16px 0px 0px 16px;">
       <h2> <strong> <%= @ride.beach.name %> </strong></h2>
       <p> <%= @ride.beach.description %> </p>
     </div>
@@ -175,7 +152,8 @@
             </div>
           <% end %>
         </div>
-        <% if !Userride.where(ride_id: @ride.id, user_id: current_user.id).blank? %>
+        <% if !user_signed_in? %>
+        <% elsif !Userride.where(ride_id: @ride.id, user_id: current_user.id).blank? %>
           <div >
             <%= link_to new_ride_review_path(@ride), method: :get do %>
               <button id="classic-btn">Add a review <i class="fas fa-pencil-alt"></i></button>
@@ -219,13 +197,24 @@
 
         <div class="show-beach-card">
           <h3>Riders</h3>
-          <h4> <strong> <%= @ride.users.count - 1%> </strong> rider(s) also going :</h4>
-          <% @ride.users.each do |user| %>
-            <ul>
-              <li style="list-style-type: none;">
-                <p class="ml-3"><i class="fas fa-swimmer mr-3"></i><%= user.username %> 🤙</p>
-              </li>
-            </ul>
+          <% if @ride.users.count <= 1 %>
+          <h5> No other rider has joined yet.</h5>
+          <% else %>
+            <h5> <strong> <%= @ride.users.count - 1%> </strong> rider(s) also going :</h5>
+            <% @ride.users.each do |user| %>
+              <ul>
+                <%= link_to user_path(user), method: :get, target: :_blank do  %>
+                <li style="list-style-type: none;">
+                  <% if user == current_user %>
+                  <% elsif user.photo.blank? %>
+                    <%= image_tag "avatar.png", alt: "alttext", class: 'avatar' %><%= user.username %> 🤙
+                  <% else %>
+                  <%= cl_image_tag user.photo.url, alt: "alttext", class: "avatar" %><%= user.username %> 🤙
+                  <% end %>
+                </li>
+                <% end %>
+              </ul>
+            <% end %>
           <% end %>
         </div>
 
@@ -249,33 +238,49 @@
 
     <% end %>
 
-    <!-- /////////////////// SURF INFO CARD //////////////////// -->
+    <!-- /////////////////// SURF CONDITIONS CARD //////////////////// -->
 
     <div class="show-beach-card">
-      <h3>Surf conditions (<%=@ride.date.strftime('%A')%> <%=@ride.date.strftime('%d')%>/<%=@ride.date.strftime('%m').to_i%> <%=@ride.time_slot.downcase%>) </h3>
+      <h3>Detailed surf conditions (<%=@ride.date.strftime('%a')%>. <%=@ride.date.strftime('%d')%>/<%=@ride.date.strftime('%m').to_i%> <%=@ride.time_slot.downcase%>) </h3>
       <div class="show-join-card-content-container" id="surf-content-phone" style="background: white;">
-        <img src="https://static.thenounproject.com/png/2588897-200.png" style="width:80px;">
+        <div style="padding:16px; background: #ffae03;">
+          <h5> <strong>Weather</strong></h5>
+          <img src="https://static.thenounproject.com/png/2588898-200.png" style="width:80px;">
+        </div>
         <div class="show-beach-card-review-content">
-          <div class="row justify-content-between" style="padding:0px 16px 0px 16px">
-            <h4> <strong>Wave</strong></h4>
-            <%= small_dots(@ride.surf_height_score(@ride.wave_height, params[:experience]).round) %>
+          <div>
+            <h6> <strong>Forecast :</strong>  <%= @ride.weather_description %> / <%= @ride.cloud_score(@ride.cloud_cover)[1] %>.</h6>
+              <h6> <strong>Air temperature : </strong> <%= @ride.air_temp %>°C</h6>
+            <h6><strong> Water temperature : </strong> <%= @ride.water_temp %>°C </h6>
           </div>
-          <h6> Wave height: <strong> <%= @ride[:wave_height].round(1) %>m </strong></h6>
-          <h6> Swell period: <strong> <%= @ride[:swell_period].round %> s </strong></h6>
-          <h6> Swell direction: <strong> <%= @ride[:swell_direction].round %>° </strong></h6>
+        </div>
+      </div>
+
+
+
+      <div class="show-join-card-content-container" id="surf-content-phone" style="background: white;">
+        <div style="padding:16px; background: #ff8811;">
+          <h5> <strong>Wave</strong></h5>
+          <img src="https://static.thenounproject.com/png/2588897-200.png" style="width:80px;">
+        </div>
+        <div class="show-beach-card-review-content">
+          <%= small_dots(@ride.surf_height_score(@ride.wave_height, params[:experience])[0].round) %>
+          <h6> <strong>Wave height :</strong <%= @ride[:wave_height].round(1) %>m > / <%= @ride.surf_height_score(@ride[:wave_height],params[:experience])[1]%></h6>
+          <h6> <strong>Swell period : </strong><%= @ride[:swell_period].round %> s  / <%= @ride.swell_period_score(@ride[:swell_period])[1]%> waves</h6>
+          <h6> <strong> Swell direction : </strong> <%= @ride[:swell_direction].round %>°  / <%= @ride.wind_direction_score(@ride[:wind_direction])[1]%> swell</h6>
         </div>
       </div>
 
       <div class="show-join-card-content-container" id="surf-content-phone" style="background: white;">
-        <img src="https://static.thenounproject.com/png/2588891-200.png" style="width:80px">
+        <div style="padding:16px; background: #fe4e00;">
+          <h5> <strong>Wind</strong></h5>
+          <img src="https://static.thenounproject.com/png/2588891-200.png" style="width:80px">
+        </div>
         <div class="show-beach-card-review-content">
-          <div class="row justify-content-between" style="padding:0px 16px 0px 16px">
-            <h4> <strong>Wind</strong></h4>
-            <%= small_dots(@ride.wind_speed_score(@ride.wind_speed).round) %>
-          </div>
-          <h6> Speed: <strong><%= @ride[:wind_speed].round %> km/h </strong></h6>
-          <h6> Gust: <strong><%= @ride[:wind_gust].round %> km/h </strong></h6>
-          <h6> Direction: <strong><%= @ride[:wind_direction].round %> ° </strong></h6>
+          <%= small_dots(@ride.wind_speed_score(@ride.wind_speed)[0].round) %>
+          <h6> <strong> Speed :</strong> <%= @ride[:wind_speed].round %> km/h / <%= @ride.wind_speed_score(@ride[:wind_speed])[1]%> wind</h6>
+          <h6> <strong> Gust :</strong> <%= @ride[:wind_gust].round %> km/h  / <%= @ride.wind_gust_score(@ride[:wind_gust] - @ride[:wind_speed])[1]%></h6>
+          <h6> <strong>Direction : </strong><%= @ride[:wind_direction].round %> °  / <%= @ride.wind_direction_score(@ride[:wind_direction])[1]%> wind</h6>
         </div>
       </div>
     </div>
