@@ -35,11 +35,6 @@ class RidesController < ApplicationController
     authorize @ride
   end
 
-  # def format_date(date)
-  #   formatted_date = Date.strptime(date[:date], '%Y-%m-%d').to_time.to_i
-  #   return formatted_date
-  # end
-
   def format_time(time)
     if time == 'Morning'
       formatted_time = "600"
@@ -76,6 +71,12 @@ class RidesController < ApplicationController
           wind_gust: info['wind_gust'],
           longitude: beach.longitude,
           latitude: beach.latitude,
+          air_temp: info['air_temp'],
+          water_temp: info['water_temp'],
+          wind_compass: info['wind_compass'],
+          swell_compass: info['swell_compass'],
+          weather_description: info['weather_description'],
+          cloud_cover: info['cloud_cover'],
           rookie_score: Ride.new.score(info, "Rookie"),
           beginner_score: Ride.new.score(info, "Beginner"),
           advanced_score: Ride.new.score(info, "Advanced"),
@@ -97,6 +98,12 @@ class RidesController < ApplicationController
       item['time'] == format_time(params[:time])
     end
     info = {
+      'air_temp' => selected_time.first['tempC'].to_i,
+      'water_temp' => selected_time.first['waterTemp_C'].to_i,
+      'wind_compass' => selected_time.first['winddir16Point'],
+      'swell_compass' => selected_time.first['swellDir16Point'],
+      'weather_description' => selected_time.first['weatherDesc'].first['value'],
+      'cloud_cover' => selected_time.first['cloudcover'].to_i,
       'surf_height' => selected_time.first['sigHeight_m'].to_f,
       'swell_height' => selected_time.first['swellHeight_m'].to_f,
       'swell_period' => selected_time.first['swellPeriod_secs'].to_f,

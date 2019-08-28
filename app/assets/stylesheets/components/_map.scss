@@ -1,6 +1,7 @@
 #map {
   height: 100vh;
-  width: 80vh;
+  flex-grow:1;
+  width: 100vh;
   position: sticky;
   margin: 16px 16px 0px 0px;
   top: 0px;
@@ -9,12 +10,12 @@
 }
 
 /*needed for old page, remove after merge of new frontend module*/
-#gmap_map {
-  flex: 0 0 450px;
-  height: 100vh;
-  position: sticky !important;
-  top: 0px !important;
-}
+// #gmap_map {
+//   flex: 0 0 450px;
+//   height: 100vh;
+//   position: sticky !important;
+//   top: 0px !important;
+// }
 /*Media Queries*/
 
 /*Smallest devices (portrait phones, less than 576px)*/
@@ -43,7 +44,7 @@
     grid-template-columns: 1fr 1fr;
   }
   #map {
-    display: block;
+    display: none;
   }
 }
 

@@ -21,9 +21,11 @@
 
 .show-join-card-content-container {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 5fr;
+  min-height: 80px;
   background: linear-gradient(270deg, #00a2b3 0%, #0c98b3 16%, #118eb3 33%, #1284b3 50%, #107ab3 66%, #0b71b3 83%, #0067b3 100%);
   border: 1px solid rgb(235,235,235);
+  border-radius: 3px;
   margin: 8px;
 }
 
@@ -91,12 +93,19 @@
 
   .show-join-card-sticky-container {
   height: 104px;
+  position: fixed;
+  top: 81vh;
+  background: white;
   }
 
   #surf-content-desktop {
     display: none;
   }
 
+}
+
+/*Smallest devices (portrait phones, less than 576px)*/
+@media (min-width: 100px) and (max-width: 575px) {
 }
 
 /*Small devices (landscape phones, 576px and up)*/
@@ -114,8 +123,9 @@
 
   .show-join-card-sticky-container {
   height: 104px;
+  position: fixed;
+  top: 82vh;
   }
-
 
   #surf-content-desktop {
     display: none;

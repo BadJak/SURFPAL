@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_192357) do
+ActiveRecord::Schema.define(version: 2019_08_27_210001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,12 @@ ActiveRecord::Schema.define(version: 2019_08_26_192357) do
     t.float "beginner_score"
     t.float "advanced_score"
     t.float "pro_score"
+    t.integer "air_temp"
+    t.integer "water_temp"
+    t.string "wind_compass"
+    t.string "swell_compass"
+    t.string "weather_description"
+    t.integer "cloud_cover"
     t.index ["beach_id"], name: "index_rides_on_beach_id"
   end
 

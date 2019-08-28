@@ -19,10 +19,10 @@
 }
 
 .results-cards {
-  width: 100%;
+  width: 1000px;
   background: white;
   border-radius: 3px;
-  // display: grid;
+  display: grid;
   grid-template-columns: 1fr;
   margin: 16px;
   // flex-grow:1;
@@ -65,14 +65,10 @@
 .results-othercards-info {
   padding: 16px;
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 2fr 4fr 1fr;
   justify-content: between;
 }
 
-// .results-othercards-title-reviews {
-//   display: grid;
-//   grid-template-columns: 1fr 1fr 1fr;
-// }
 
 .card:hover{
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
@@ -85,5 +81,29 @@
   margin: 0;
   text-align: left;
   padding: 8px;
+}
+
+/*Smallest devices (portrait phones, less than 576px)*/
+@media (min-width: 100px) and (max-width: 575px) {
+  .beach-card-pic {
+  display: none;
+  }
+
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 768px) {
+  .beach-card-pic {
+  display: none;
+  }
+
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991px) {
+  .beach-card-pic {
+  display: none;
+  }
+
 }
 

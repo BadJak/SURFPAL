@@ -15,7 +15,7 @@
 
     <%else %>
       <h2 style="padding:8px"> <strong> We recommend 🏄</strong></h2>
-      <%= link_to  ride_path(@rides.first), target: :_blank do %>
+      <%= link_to  ride_path(@rides.first, experience: params[:experience]), target: :_blank do %>
         <div class="results-firstcard">
           <h1><%= @rides.first.beach.name %></h1>
           <% average = Review.where(beach_id: @rides.first.beach_id).average(:rating) %>
@@ -31,35 +31,29 @@
       <% @rides.each_with_index do |ride, index| %>
         <% next if index == 0 %>
         <div class="results-othercards">
-        <img src="https://images.unsplash.com/photo-1499232217236-f8a184148559?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80">
-<!--           cl_image_tag ride.beach.photo.url, alt: "alttext" -->
-          <%= link_to ride_path(ride), target: :_blank do %>
+        <img src="https://images.unsplash.com/photo-1499232217236-f8a184148559?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80" class="beach-card-pic">
+        <%= link_to ride_path(ride), target: :_blank do %>
             <div class="results-othercards-info">
-                <div>
-                  <h4> <strong><%= ride.beach.name %></strong>  </h6>
-                  <h5> <%= ride.beach.country %> </h5>
-                  <div class="results-beach-icons">
-                    <i class="fas fa-parking" id="results-beach-icon-on"></i>
-                    <i class="far fa-life-ring" id="results-beach-icon-on"></i>
-                    <i class="fas fa-shower" id="results-beach-icon-off"></i>
-                    <i class="fas fa-store" id="results-beach-icon-on"></i>
-                    <i class="fas fa-utensils" id="results-beach-icon-off"></i>
-                    <i class="fas fa-mug-hot" id="results-beach-icon-off"></i>
-                  </div>
-                </div>
-                <div style="padding:4px 8px 8px 16px;">
-                  <% if Review.where(beach_id: ride.beach_id).blank? %>
-                  <h6 style="color:$light-grey">(no review yet)</h6>
-                  <% else %>
-                  <h2> <%= small_stars(Review.where(beach_id: ride.beach_id).average(:rating).round) %></h2>
-                  <% end %>
-                </div>
-                <div>
-                  <h5>Wave height:</h5>
-                  <%= small_dots(ride.surf_height_score(ride.wave_height, params[:experience]).round) %>
-                  <h5>Wind speed:</h5>
-                  <%= small_dots(ride.wind_speed_score(ride.wind_speed).round) %>
-                </div>
+              <div>
+                <h4> <strong><%= ride.beach.name %></strong>  </h6>
+                <h5> <%= ride.beach.country %> </h5>
+
+              </div>
+              <div style="padding:4px 8px 8px 16px;">
+                <% if Review.where(beach_id: ride.beach_id).blank? %>
+                <h6 style="color:$light-grey">(no review yet)</h6>
+                <% else %>
+                <h2 style="text-align: right";> <%= small_stars(Review.where(beach_id: ride.beach_id).average(:rating).round) %></h2>
+                <% end %>
+              </div>
+              <div class="results-beach-icons">
+                <i class="fas fa-parking" id="results-beach-icon-on"></i>
+                <i class="far fa-life-ring" id="results-beach-icon-on"></i>
+                <i class="fas fa-shower" id="results-beach-icon-off"></i>
+                <i class="fas fa-store" id="results-beach-icon-on"></i>
+                <i class="fas fa-utensils" id="results-beach-icon-off"></i>
+                <i class="fas fa-mug-hot" id="results-beach-icon-off"></i>
+              </div>
             </div>
           <% end %>
         </div>
