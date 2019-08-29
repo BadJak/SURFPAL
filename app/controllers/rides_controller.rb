@@ -58,7 +58,7 @@ class RidesController < ApplicationController
       @beaches = Beach.near(params[:location],Ride.new.distance(params[:distance]))
       @beaches.each do |beach|
         info = fetch_data(beach[:longitude], beach[:latitude], 6)
-        calcSH = info['swell_height'] * (Ride.new.swell_period_score(info['swell_period']) + Ride.new.swell_direction_score(info['swell_direction'])) * 3 / 5.0
+        calcSH = info['swell_height'] * (Ride.new.swell_period_score(info['swell_period'])[0] + Ride.new.swell_direction_score(info['swell_direction'])) * 3 / 5.0
         @ride = Ride.create(
           date: Date.strptime(params[:date][:date], '%Y-%m-%d'),
           time_slot: params[:time],

@@ -163,13 +163,14 @@
 
       </div>
       <% @ride.beach.reviews.order(created_at: :desc).take(5).each do |review| %>
-        <%= link_to user_path(review.user), method: :get, target: :_blank do   %>
         <div class="show-beach-card-review">
+          <%= link_to user_path(review.user), method: :get, target: :_blank do   %>
             <% if review.user.photo.blank? %>
-            <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-medium-bordered">
+            <img src='avatar.png' class="avatar-medium-bordered">
             <% else %>
             <%= cl_image_tag review.user.photo.url, alt: "alttext", class: "avatar-medium-bordered" %>
             <% end %>
+          <% end %>
             <div class="show-beach-card-review-content">
               <div class="inline-stars">
                 <% (review.rating.to_i).times do %>
@@ -183,8 +184,7 @@
               <h5><strong><%= review.user.username.capitalize %></strong> from <%= review.user.hometown %></h5>
               <p><%= review.description %></p>
             </div>
-          </div>
-          <% end %>
+        </div>
       <% end %>
     </div>
 
@@ -204,16 +204,20 @@
             <h5> <strong> <%= @ride.users.count - 1%> </strong> rider(s) also going :</h5>
             <% @ride.users.each do |user| %>
               <ul>
-                <%= link_to user_path(user), method: :get, target: :_blank do  %>
                 <li style="list-style-type: none;">
-                  <% if user == current_user %>
-                  <% elsif user.photo.blank? %>
-                    <%= image_tag "avatar.png", alt: "alttext", class: 'avatar' %><%= user.username %> 🤙
-                  <% else %>
-                  <%= cl_image_tag user.photo.url, alt: "alttext", class: "avatar" %><%= user.username %> 🤙
-                  <% end %>
+
+                    <% if user == current_user %>
+                    <% else %>
+                      <%= link_to user_path(user), method: :get, target: :_blank do  %>
+                        <% if user.photo.blank? %>
+                        <%= image_tag "avatar.png", alt: "alttext", class: 'avatar' %>
+                        <% else %>
+                        <%= cl_image_tag user.photo.url, alt: "alttext", class: "avatar" %>
+                        <% end %>
+                      <% end %>
+                      <%= user.username %> 🤙
+                    <% end %>
                 </li>
-                <% end %>
               </ul>
             <% end %>
           <% end %>
@@ -242,7 +246,7 @@
     <!-- /////////////////// SURF CONDITIONS CARD //////////////////// -->
 
     <div class="show-beach-card">
-      <h3>Detailed surf conditions (<%=@ride.date.strftime('%a')%>. <%=@ride.date.strftime('%d')%>/<%=@ride.date.strftime('%m').to_i%> <%=@ride.time_slot.downcase%>) </h3>
+      <h3>Surf conditions (<%=@ride.date.strftime('%a')%>. <%=@ride.date.strftime('%d')%>/<%=@ride.date.strftime('%m').to_i%> <%=@ride.time_slot.downcase%>) </h3>
       <div class="show-join-card-content-container" id="surf-content-phone" style="background: white;">
         <div style="padding:16px; background: #ffae03;">
           <h5> <strong>Weather</strong></h5>
@@ -281,7 +285,7 @@
           <%= small_dots(@ride.wind_speed_score(@ride.wind_speed)[0].round) %>
           <h5> <strong> Speed :</strong> <%= @ride[:wind_speed].round %> km/h / <%= @ride.wind_speed_score(@ride[:wind_speed])[1]%> wind <%= @ride.wind_speed_score(@ride[:wind_speed])[2]%></h5>
           <h5> <strong> Gust :</strong> <%= @ride[:wind_gust].round %> km/h  / <%= @ride.wind_gust_score(@ride[:wind_gust] - @ride[:wind_speed])[1]%> <%= @ride.wind_gust_score(@ride[:wind_gust] - @ride[:wind_speed])[2]%></h5>
-          <h5> <strong>Direction : </strong><%= @ride[:wind_direction].round %> °  / <%= @ride.wind_direction_score(@ride[:wind_direction])[1]%> wind <%= @ride.wind_direction_score(@ride[:wind_direction])[2]%></h5>
+          <h5> <strong>Direction : </strong><%= @ride[:wind_direction].round %> ° 🧭 <%= @ride[:wind_compass] %> / <%= @ride.wind_direction_score(@ride[:wind_direction])[1]%> wind <%= @ride.wind_direction_score(@ride[:wind_direction])[2]%></h5>
         </div>
       </div>
     </div>
