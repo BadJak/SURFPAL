@@ -25,6 +25,17 @@
   border: solid 2px $dark-orange;
 }
 
+.create-btn {
+  background-color: $dark-orange;
+  color: white;
+  border-radius: 25px;
+  width: 116px;
+  height: 40px;
+  float: right;
+  font-size: 20px;
+}
+
+
 #join-btn {
   background: none;
   font-size: 18px;
