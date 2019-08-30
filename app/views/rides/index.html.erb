@@ -4,10 +4,10 @@
 
   <div class="results-cards">
 
-    <% if @rides.empty? %>
+    <% if @rides.empty? || @results.blank? %>
       <div class="error-banner">
           <div style="height:100%">
-            <img style="height:140px; margin: 24px;" src="/assets/error_pic.svg">
+            <img style="height:140px; margin: 24px;" src="https://static.thenounproject.com/png/2588899-200.png">
             <h1> Sorry, no registered spot near <%= params[:location] %> 😕 </h1>
             <h3> Please search again by selecting another location or time. </h3>
           </div>
