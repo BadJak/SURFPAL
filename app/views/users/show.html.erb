@@ -60,82 +60,87 @@
       </div>
 
       <div class="col-12 col-lg-4">
-        <div class="profile-ride-card">
-          <div class="profile-ride-content">
-            <h2>Notifications</h2>
-            <h5>Update your preferences to receive email reminders before your upcoming ride !</h5>
-            <form>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputState">Surf level</label>
-                  <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>Rookie</option>
-                    <option>Beginner</option>
-                    <option>Advanced</option>
-                    <option>Pro</option>
-                  </select>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="inputPassword4">Favorite location</label>
-                  <input type="text" class="form-control" placeholder="City">
-                </div>
-              </div>
-              <div>
-                  <label >Available timeslots</label>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label class="form-check-label" for="gridCheck">
-                    <em>Weekdays :</em>
-                  </label>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                      Morning
-                    </label>
+
+        <% if @user == current_user %>
+          <div class="profile-ride-card">
+            <div class="profile-ride-content">
+              <h2>Notifications</h2>
+              <h5>Update your preferences to receive email reminders before your upcoming ride !</h5>
+              <form>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputState">Surf level</label>
+                    <select id="inputState" class="form-control">
+                      <option selected>Choose...</option>
+                      <option>Rookie</option>
+                      <option>Beginner</option>
+                      <option>Advanced</option>
+                      <option>Pro</option>
+                    </select>
                   </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                     Noon
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                      Afternoon
-                    </label>
+                  <div class="form-group col-md-6">
+                    <label for="inputPassword4">Favorite location</label>
+                    <input type="text" class="form-control" placeholder="City">
                   </div>
                 </div>
-                <div class="form-group col-md-6">
-                  <label class="form-check-label" for="gridCheck">
-                    <em>Weekends :</em>
-                  </label>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                <div>
+                    <label >Available timeslots</label>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
                     <label class="form-check-label" for="gridCheck">
-                      Morning
+                      <em>Weekdays :</em>
                     </label>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck">
+                      <label class="form-check-label" for="gridCheck">
+                        Morning
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck">
+                      <label class="form-check-label" for="gridCheck">
+                       Noon
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck">
+                      <label class="form-check-label" for="gridCheck">
+                        Afternoon
+                      </label>
+                    </div>
                   </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                  <div class="form-group col-md-6">
                     <label class="form-check-label" for="gridCheck">
-                     Noon
+                      <em>Weekends :</em>
                     </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                      Afternoon
-                    </label>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck">
+                      <label class="form-check-label" for="gridCheck">
+                        Morning
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck">
+                      <label class="form-check-label" for="gridCheck">
+                       Noon
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck">
+                      <label class="form-check-label" for="gridCheck">
+                        Afternoon
+                      </label>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <button type="submit" class="btn btn-warning" style="background-color: #316D69; border: none; color: white; border-radius: 25px; width: 100px;">Save</button>
-            </form>
+                <button type="submit" class="btn btn-warning" style="background-color: #316D69; border: none; color: white; border-radius: 25px; width: 100px;">Save</button>
+              </form>
+            </div>
           </div>
-        </div>
+        <% else %>
+        <% end %>
+
       </div>
 
 </div>

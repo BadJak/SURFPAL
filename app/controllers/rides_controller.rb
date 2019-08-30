@@ -11,12 +11,12 @@ class RidesController < ApplicationController
       unsorted_rides = @rides.near(params[:location],Ride.new.distance(params[:distance])).where(date: Date.strptime(params[:date][:date], '%Y-%m-%d'), time_slot: params[:time])
       score = "#{params[:experience].downcase}_score"
       @rides = unsorted_rides.sort_by { |k| -k[score]}
-        if @rides.empty?
-          results = Geocoder.search(params[:location])
+      @results = Geocoder.search(params[:location])
+        if @rides.empty? || @results.blank?
           @markers = {
-             lat: results.first.coordinates[0],
-             lng: results.first.coordinates[1]
-            }
+           lat: -7.6388718,
+           lng: 33.5924503
+          }
         else
           @markers = @rides.map do |ride|
             {
@@ -51,8 +51,12 @@ class RidesController < ApplicationController
   def create
     @rides = Ride.near(params[:location],Ride.new.distance(params[:distance]))
     result = @rides.find do |ride|
+      if params[:date][:date] == ""
+        params[:date][:date] = Date.today.strftime('%Y-%m-%d')
+      else
       Date.strptime(params[:date][:date], '%Y-%m-%d') == ride.date &&
       params[:time] == ride.time_slot
+      end
     end
     if result.nil?
       @beaches = Beach.near(params[:location],Ride.new.distance(params[:distance]))
